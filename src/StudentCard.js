@@ -8,7 +8,12 @@ class StudentCard extends Component {
         return (
            <>
                 <div>
-                    <p>student profiles go here</p>
+                    <p className="studentName boldLabel">Student Name</p>
+                    <p><span className="boldLabel">Cohort: </span> </p>
+                    <p><span className="boldLabel">Website:</span> </p>
+                    <p><i class="fab fa-github-square"></i></p>
+                    <p><i class="fab fa-linkedin"></i></p>
+                    <p><span className="boldLabel">About Me:</span></p>
                 </div>
            </>
         );

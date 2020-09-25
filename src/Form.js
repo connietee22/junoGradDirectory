@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 class Form extends Component {
     render () {
         return (
-            <p>form goes here</p>
+            <>
+                <form>
+                    <p>FORM PLACEHOLDER</p>
+                </form>
+            </>
         )
     }
 }
