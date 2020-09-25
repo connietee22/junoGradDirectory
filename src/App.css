@@ -36,6 +36,15 @@ h1 {
   font-weight: bold;
   font-size: clamp(5rem, 5vw, 7rem);
   text-align: center;
+  padding-bottom: 50px;
+}
+
+p {
+   line-height: 1.6;
+}
+
+input {
+  text-transform: uppercase;
 }
 
 .junoType {
@@ -56,6 +65,7 @@ h1 {
 
 header {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -63,8 +73,15 @@ header {
 
 form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 40px 0px;
+}
+
+input {
+  border: 0px;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+
 }
 

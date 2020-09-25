@@ -19,10 +19,13 @@ class App extends Component {
       <div className="App wrapper">
         <header>
           <h1><span className="junoType">Juno College</span>Grad Directory</h1>
+          <div className="formToFill">
+            <Form />
+          </div>
         </header>
-        <section className="gradForm">
-          <Form />
-        </section>
+        {/* <section className="gradForm">
+          
+        </section> */}
         <section className="studentProfiles">
           <StudentCard />
         </section>
