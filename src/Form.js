@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 
 class Form extends Component {
     render () {
-        // console.log(this.props); // will display the object with the method - when we create props, we creaete properties on an object
-        // we need to use the function as an onchange handler
+		// console.log(this.props); // will display the object with the method - when we create props, we creaete properties on an object
+		// we need to use the function as an onchange handler
 
-// keep track of each change in the inputs and store the values in state -- best practice in react
-// on submit event listener -- needs a function. that wll take all the values in state that turns them into one object that can be pushed to db and studentCard array. 
+		// keep track of each change in the inputs and store the values in state -- best practice in react
+		// on submit event listener -- needs a function. that wll take all the values in state that turns them into one object that can be pushed to db and studentCard array.
+		// for FORM
+		// define a function
+		// handle change for each input
+		// pass the function into the form as a prop
+		// call the handle change function in the form
+		// pass the info from form into the function call as an argument
 
-// onchange event listeners can live in this form and can track the state of them in this form
+		// onchange event listeners can live in this form and can track the state of them in this form
 
-// on submit should be in app.js
-        
-        return (
+		// on submit should be in app.js
+
+		return (
 			<>
 				<form>
 					<p>Survive Juno College's bootcamp? Add your card to the directory!</p>
@@ -21,7 +27,8 @@ class Form extends Component {
 						<input
 							type="text"
 							id="firstName"
-							name="firstName"
+                            name="firstName"
+                            // function will trigger on change of this element - WHY NOT ()??
 							onChange={this.props.handleFirstName}
 							value={this.props.firstName}
 							// why do I need to put this value ^ here?
@@ -41,9 +48,10 @@ class Form extends Component {
 
 					<label htmlFor="website" aria-label="enter website address"></label>
 					<input
-						type="text"
+						type="url"
 						id="website"
 						name="website"
+						className="standAloneInput"
 						placeholder="website"
 						onChange={this.props.handleWebsite}
 						value={this.props.website}
@@ -52,7 +60,7 @@ class Form extends Component {
 					<div className="inputsFlex">
 						<label htmlFor="github" aria-label="enter github username"></label>
 						<input
-							type="text"
+							type="url"
 							id="github"
 							name="github"
 							onChange={this.props.handleGithub}
@@ -62,7 +70,7 @@ class Form extends Component {
 
 						<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
 						<input
-							type="text"
+							type="url"
 							id="linkedIn"
 							name="linkedIn"
 							onChange={this.props.handleLinkedIn}
@@ -71,21 +79,22 @@ class Form extends Component {
 						></input>
 					</div>
 
-					<label htmlFor="about" aria-label="enter one fun fact about yourself"></label>
-					<input
-						type="text"
+					<label htmlFor="funFact" aria-label="enter one fun fact about yourself"></label>
+					<textarea
+						maxLength="100"
 						id="funFact"
 						name="funFact"
-						onChange={this.props.funFact}
+						className="standAloneInput"
+						onChange={this.props.handleFunFact}
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
-					></input>
+					></textarea>
 
 					<button onClick={this.props.handleSubmit}>Submit</button>
 				</form>
 			</>
 		);
-    }
+	}
 }
 
 export default Form;

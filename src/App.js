@@ -12,9 +12,11 @@ class App extends Component {
 			studentCards: [],
 			firstName: '',
 			lastName: '',
-      website: '',
-      github: '',
-      linkedIn: '',
+			website: '',
+			github: '',
+			linkedIn: '',
+			funFact: '',
+			selectedDropDown: 'select',
 		};
 	}
 
@@ -23,6 +25,7 @@ class App extends Component {
 		// call on the database
 		const dbRef = firebase.database().ref();
 
+		// on any change of the database, push the data into a state array
 		dbRef.on('value', (response) => {
 			// creating new array to hold the data
 			const newState = [];
@@ -33,25 +36,21 @@ class App extends Component {
 					key: key,
 					firstName: data[key].firstName,
 					lastName: data[key].lastName,
-          website: data[key].website,
-          github: data[key].github,
-          linkedIn: data[key].linkedIn,
+					website: data[key].website,
+					github: data[key].github,
+					linkedIn: data[key].linkedIn,
+					funFact: data[key].funFact,
 				});
 			}
 
+			// setting the new array of data from firebase into our state array, which we can manipulate for display
 			this.setState({
 				studentCards: newState,
 			});
 		});
-		// ensure database and state are both being updated (hopefully at the same time)
 	}
 
-	// for FORM
-	// define a function
-	// handle change for each input
-	// pass the function into the form as a prop
-	// call the handle change function in the form
-	// pass the info from form into the function call as an argument
+	//****EVENT HANDLER FUNCTION for FORM.JS -- IS THIS BETTER HERE OR IN FORM?
 	handleFirstName = (event) => {
 		this.setState({
 			firstName: event.target.value,
@@ -82,49 +81,60 @@ class App extends Component {
 		});
 	};
 
-	// state in form --> would still need to get into app --> define the handle submit in app, pass in form, call in form, pass in all state value - (remember arrow function to add)
-
-	// on form submit gathering values from all the inputs
-	// handleSubmit - take states and form them into object
-	// update db firebase and then form into object
+	handleFunFact = (event) => {
+		this.setState({
+			funFact: event.target.value,
+		});
+	};
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 
 		// open portal to Firebase
-    const dbRef = firebase.database().ref();
+		const dbRef = firebase.database().ref();
 
-    // changes the state for individual data
-    this.setState ({
+		// on form submit, gather values from all the inputs
+		// change the individual data states
+		this.setState({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
-      website: this.state.website,
-      github: this.state.github,
-      linkedIn: this.state.linkedIn,
-    });
+			website: this.state.website,
+			github: this.state.github,
+			linkedIn: this.state.linkedIn,
+			funFact: this.state.funFact,
+		});
 
-		// add new record to Firebase
-    dbRef.push({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      website: this.state.website,
-      github: this.state.github,
-      linkedIn: this.state.linkedIn,
-    });
+		// push new student object to Firebase
+		dbRef.push({
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			website: this.state.website,
+			github: this.state.github,
+			linkedIn: this.state.linkedIn,
+			funFact: this.state.funFact,
+		});
 
-		// reset input field
-		// this.setState({
-		// 	firstName: '',
-		// 	lastName: '',
-    //   website: '',
-    //   github: '',
-    //   linkedIn: '',
-		// });
+		// reset input field ???**** What is this doing?
+		this.setState({
+			firstName: '',
+			lastName: '',
+			website: '',
+			github: '',
+			linkedIn: '',
+			funFact: '',
+		});
 	};
 
-	//  const dbRef = firebase.database().ref();
+//*****EVENT HANDLER FOR DROP-DOWN SELECT - ??? HOW TO CONNECT VALUE OF DROPDOWN */
+	handleClick = (event) => {
+		console.log(event.target.value); // returns aZ
+		this.setState({
+			selectedDropDown: event.target.value, // this isn't saving
+		});
+		console.log(this.selectedDropDown); // returns undefined
+	};
 
-	// rendering the results on the page
+//****rendering the results on the page
 	render() {
 		return (
 			<div className="App">
@@ -133,44 +143,61 @@ class App extends Component {
 						<span className="junoType">Juno College</span>Grad Directory
 					</h1>
 					<div className="formToFill">
-						{/* handlefirstname is a prop that passes in the value of a function */}
-
+						{/* rendering Form on page */}
 						<Form
+							/* props that pass in the value of a function */
 							handleFirstName={this.handleFirstName}
 							handleLastName={this.handleLastName}
 							handleWebsite={this.handleWebsite}
 							handleGithub={this.handleGithub}
 							handleLinkedIn={this.handleLinkedIn}
+							handleFunFact={this.handleFunFact}
 							handleSubmit={this.handleSubmit}
+							// state data used as props in Form
 							lastName={this.lastName}
 							firstName={this.firstName}
-              website={this.website}
-              github={this.github}
-              linkedIn={this.linkedIn}
+							website={this.website}
+							github={this.github}
+							linkedIn={this.linkedIn}
+							funFact={this.funFact}
 						/>
 					</div>
 				</header>
 
-				{/* mapping over the entire array -- all of the students */}
 				<main>
+					{/******DROP-DOWN MENU TO SORT CARDS */}
+					<form>
+						<label htmlFor="sortCards" aria-label="select drop-down option to sort student cards"></label>
+						<select id="sortCards" value={this.state.selectedDropDown} onChange={this.handleClick}>
+							<option value="select">Sort students by:</option>
+							<option value="aZ">A-Z</option>
+						</select>
+					</form>
+
+					{/* JSX TO DISPLAY CORRECT DATA */}
+					{/* { this.state.selectedDropDown == "aZ" ? write code here to go through studentCards state array and alphabetize? : null??? 	 } */}
+
 					<section className="studentProfiles wrapper">
 						<div className="cardsContainer">
+							{/* mapping over the entire array of all students in the database */}
 							{this.state.studentCards.map((student, index) => {
 								return (
 									<StudentDisplay
-										key={index}
-										firstName={student.firstName} // the value doesn't matter here --
+										key={index} // to differentiate each record in React
+										// this is all the state data to be used as props in the StudentDisplay
+										firstName={student.firstName}
 										lastName={student.lastName}
-                    website={student.website}
-                    github={student.github}
-                    linkedIn={student.linkedIn}
+										website={student.website}
+										github={student.github}
+										linkedIn={student.linkedIn}
+										funFact={student.funFact}
 									/>
 								);
 							})}
 						</div>
 					</section>
 				</main>
-				<footer></footer>
+				<footer>Created by Connie Tsang at Juno College</footer>
 			</div>
 		);
 	}

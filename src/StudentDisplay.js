@@ -27,7 +27,8 @@ class StudentDisplay extends Component {
 						</a>
 					</p>
 					<p>
-						<span className="boldLabel">About Me:</span>
+						<span className="boldLabel">About Me: </span>
+                        {this.props.funFact}
 					</p>
 				</div>
 			</>

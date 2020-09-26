@@ -1,5 +1,1 @@
-CHECKLIST 
-
-
-// get all on-change listeners for form inputs, putting info into state
-// submit button - compiling all input values into a student object to state
+Juno College Grad Directory: A directory of Juno College Bootcamp Grads, where users can input basic details, which will display in browsable user cards.

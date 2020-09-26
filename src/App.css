@@ -14,9 +14,12 @@ html {
 body {
   background-color: #fffaf1;
   font-size: 1.6rem;
-  /* font-family: 'Roboto', sans-serif;
-   */
-   font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
+  resize: none;
 }
 
 img {
@@ -40,12 +43,17 @@ h1 {
   padding-bottom: 50px;
 }
 
-
 p {
   line-height: 1.6;
 }
 
-input {
+a {
+  text-decoration: none;
+  color: #3a2e22;
+}
+
+input,
+textarea {
   text-transform: uppercase;
 }
 
@@ -82,14 +90,16 @@ form {
   width: 100%;
 }
 
-input {
+input,
+textarea {
   border: 0px;
   border-bottom: 2px solid grey;
   padding: 10px;
   margin: 10px 0px;
+  width: 100%;
 }
 
-input#website {
+.standaloneInput input {
   width: 100%;
 }
 
@@ -114,12 +124,16 @@ button {
 }
 
 /******STUDENT CARD DISPLAY SECTION  */
-
-
 main {
   background: url('./assets/josephine-bredehoft-unsplash.jpg'); 
   /* credit <span>Photo by <a href="https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Josephine Bredehoft</a> on <a href="https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */
-  padding: 50px 0;
+  padding: 60px 0;
+}
+
+select {
+  text-transform: uppercase;
+  padding: 10px 25px 10px 15px;
+  margin-bottom: 20px;
 }
 
 .cardsContainer {
@@ -143,6 +157,11 @@ main {
 
 .cardsContainer div:nth-child(even) {
   transform: rotate(1deg);
+}
+
+.fa-github-square,
+.fa-linkedin {
+  margin-right: 10px;
 }
 
 @media (max-width: 1024px) {
