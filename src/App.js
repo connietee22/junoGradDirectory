@@ -12,8 +12,9 @@ class App extends Component {
 			studentCards: [],
 			firstName: '',
 			lastName: '',
-			website: '',
-			userInput: '',
+      website: '',
+      github: '',
+      linkedIn: '',
 		};
 	}
 
@@ -26,14 +27,15 @@ class App extends Component {
 			// creating new array to hold the data
 			const newState = [];
 			const data = response.val();
-	
 
 			for (const key in data) {
 				newState.push({
 					key: key,
 					firstName: data[key].firstName,
 					lastName: data[key].lastName,
-					website: data[key].website,
+          website: data[key].website,
+          github: data[key].github,
+          linkedIn: data[key].linkedIn,
 				});
 			}
 
@@ -62,82 +64,100 @@ class App extends Component {
 		this.setState({
 			lastName: event.target.value,
 		});
-  };
-  
-  handleWebsite = (event) => {
-    this.setState({
-      website: event.target.value
-    })
-  }
+	};
+
+	handleWebsite = (event) => {
+		this.setState({
+			website: event.target.value,
+		});
+	};
+
+	handleGithub = (event) => {
+		this.setState({
+			github: event.target.value,
+		});
+	};
+
+	handleLinkedIn = (event) => {
+		this.setState({
+			linkedIn: event.target.value,
+		});
+	};
 
 	// state in form --> would still need to get into app --> define the handle submit in app, pass in form, call in form, pass in all state value - (remember arrow function to add)
 
 	// on form submit gathering values from all the inputs
 	// handleSubmit - take states and form them into object
-  // update db firebase and then form into object
-  
-  handleSubmit = (event) => {
+	// update db firebase and then form into object
+
+	handleSubmit = (event) => {
 		event.preventDefault();
 
 		// open portal to Firebase
 		const dbRef = firebase.database().ref();
 
-    // console.log(this.state.firstName);
-    
-    const newStudentCard = {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        website: this.state.website,
-    }
+		const newStudentCard = {
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			website: this.state.website,
+		};
 
 		// add new record to Firebase
-    dbRef.push(newStudentCard);
+		dbRef.push(newStudentCard);
 
 		// reset input field
 		this.setState({
-      firstName: '',
-      lastName: '',
-      website: '',
+			firstName: '',
+			lastName: '',
+			website: '',
 		});
-  }
+	};
 
 	//  const dbRef = firebase.database().ref();
 
 	// rendering the results on the page
 	render() {
 		return (
-			<div className="App wrapper">
-				<header>
+			<div className="App">
+				<header className="wrapper">
 					<h1>
 						<span className="junoType">Juno College</span>Grad Directory
 					</h1>
 					<div className="formToFill">
 						{/* handlefirstname is a prop that passes in the value of a function */}
+
 						<Form
 							handleFirstName={this.handleFirstName}
 							handleLastName={this.handleLastName}
 							handleWebsite={this.handleWebsite}
+							handleGithub={this.handleGithub}
+							handleLinkedIn={this.handleLinkedIn}
 							handleSubmit={this.handleSubmit}
-              lastName={this.lastName}
-              firstName={this.firstName} 
-              website={this.website}
+							lastName={this.lastName}
+							firstName={this.firstName}
+							website={this.website}
 						/>
 					</div>
 				</header>
 
 				{/* mapping over the entire array -- all of the students */}
-				<section className="studentProfiles">
-					{this.state.studentCards.map((student, index) => {
-						return (
-							<StudentDisplay
-								key={index}
-								firstName={student.firstName} // the value doesn't matter here --
-								lastName={student.lastName}
-								website={student.website}
-							/>
-						);
-					})}
-				</section>
+				<main>
+					<section class="studentProfiles wrapper">
+						<div className="cardsContainer">
+							{this.state.studentCards.map((student, index) => {
+								return (
+									<StudentDisplay
+										key={index}
+										firstName={student.firstName} // the value doesn't matter here --
+										lastName={student.lastName}
+										website={student.website}
+									/>
+								);
+							})}
+						</div>
+					</section>
+				</main>
+				<footer></footer>
 			</div>
 		);
 	}

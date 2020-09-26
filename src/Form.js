@@ -25,6 +25,7 @@ class Form extends Component {
 						name="firstName"
 						onChange={this.props.handleFirstName}
 						value={this.props.firstName}
+						// why do I need to put this value ^ here?
 					></input>
 
 					<label htmlFor="lastName" aria-label="enter last name">
@@ -51,9 +52,11 @@ class Form extends Component {
 					></input>
 
 					<label htmlFor="github">Github:</label>
-					<input type="text" id="github" name="github"></input>
+					<input type="text" id="github" name="github" onChange={this.props.github}></input>
+
 					<label htmlFor="linkedIn">LinkedIn:</label>
-					<input type="text" id="linkedIn" name="linkedIn"></input>
+					<input type="text" id="linkedIn" name="linkedIn" onChange={this.props.handleLinkedIn}></input>
+                    
 					<button onClick={this.props.handleSubmit}>Submit</button>
 				</form>
 			</>
