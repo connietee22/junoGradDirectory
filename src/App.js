@@ -22,7 +22,7 @@ class App extends Component {
 		};
 	}
 
-	// updating state through componentDidMount
+//****UPDATING STATE THRU COMPONENTDIDMOUNT()
 	componentDidMount() {
 		// call on the database
 		const dbRef = firebase.database().ref();
@@ -53,7 +53,7 @@ class App extends Component {
 		});
 	}
 
-	//****EVENT HANDLER FUNCTION for FORM.JS -- IS THIS BETTER HERE OR IN FORM?
+//****EVENT HANDLER FUNCTIONS for FORM.JS -- IS THIS BETTER HERE OR IN FORM? -- ??? and how to push set the state from a child?
 	handleFirstName = (event) => {
 		this.setState({
 			firstName: event.target.value,
@@ -96,25 +96,14 @@ class App extends Component {
 		});
 	};
 
-	// *****EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit
+	// *****EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit to push to firebase
 	handleSubmit = (event) => {
 		event.preventDefault();
 
 		// open portal to Firebase
 		const dbRef = firebase.database().ref();
 
-		// on form submit, gather values from all the inputs
-		// change the individual data states
-		this.setState({
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			cohort: this.state.cohort,
-			website: this.state.website,
-			github: this.state.github,
-			linkedIn: this.state.linkedIn,
-			funFact: this.state.funFact,
-		});
-
+		// gather values from all the inputs into an object and
 		// push new student object to Firebase
 		dbRef.push({
 			firstName: this.state.firstName,
@@ -126,11 +115,11 @@ class App extends Component {
 			funFact: this.state.funFact,
 		});
 
-		// reset input field ???**** What is this doing?
+		// reset input field ???**** why is this not working?
 		this.setState({
 			firstName: '',
 			lastName: '',
-			cohort: '',
+			cohort: null,
 			website: '',
 			github: '',
 			linkedIn: '',
@@ -138,16 +127,19 @@ class App extends Component {
 		});
 	};
 
-	//*****EVENT HANDLER FOR DROP-DOWN SELECT - ??? HOW TO CONNECT VALUE OF DROPDOWN */
-	handleClick = (event) => {
-		console.log(event.target.value); // returns aZ
-		this.setState({
-			selectedDropDown: event.target.value, // this isn't saving (see console log below)
-		});
-		console.log(this.selectedDropDown); // returns undefined
-	};
+//*****EVENT HANDLER FOR DROP-DOWN SELECT - ???  How to connect to value of drop-down? Or does this need to be in DropDown component and if so, how to set state? */
+	handleSelect = (event) => {
 
-	//****rendering the results on the page
+		console.log(event.target.value); // doesn't return anything now that event is in DropDown 
+		this.setState({
+			selectedDropDown: event.target.value, // this wasn't saving even when the event listener was actually on this page 
+		});
+		/* ??? if there is a change on the drop-down, JSX WILL DISPLAY FILTERED COHORT */
+		const filteredCohort = this.state.studentCards.filter(
+			(student) => student.cohort === this.state.selectedDropDown);
+		};
+
+//****RENDERING THE INITIAL PAGE
 	render() {
 		return (
 			<div className="App">
@@ -167,6 +159,7 @@ class App extends Component {
 							handleLinkedIn={this.handleLinkedIn}
 							handleFunFact={this.handleFunFact}
 							handleSubmit={this.handleSubmit}
+							
 							// state data used as props in Form
 							lastName={this.lastName}
 							firstName={this.firstName}
@@ -180,11 +173,9 @@ class App extends Component {
 				</header>
 
 				<main>
-					{/* to render drop-down menu on page */}
-					<DropDown handleClick={this.handleClick} selectedDropDown={this.selectedDropDown} />
+					{/* Pulling in DropDown component to render filter menu on page */}
+					<DropDown handleClick={this.handleSelect} selectedDropDown={this.selectedDropDown} />
 
-					{/* JSX TO DISPLAY CORRECT DATA */}
-					{/* { this.state.selectedDropDown == "aZ" ? write code here to go through studentCards state array and alphabetize? : null??? 	 } */}
 
 					<section className="studentProfiles wrapper">
 						<div className="cardsContainer">

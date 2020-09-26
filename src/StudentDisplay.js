@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
-// you only need to access one student here so this does not need to have state!
+
+// i can change this to function?
+// const StudentDisplay = (props) => {
+// 	return (
+// 		<div>
+// 			<p className="studentName boldLabel">{this.props.firstName} {this.props.lastName}</p>
+// // 		</div>
+// 	);
+// };
+
+// only need to access one student here so this does not need state!
 class StudentDisplay extends Component {
     render() {
         return (
