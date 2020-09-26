@@ -19,12 +19,14 @@ class StudentDisplay extends Component {
 					<p className="studentName boldLabel">
 						{this.props.firstName} {this.props.lastName}
 					</p>
-					<p className="boldLabel">cohort {this.props.cohort}
+					<p className="boldLabel">cohort {this.props.cohort}</p>
+
+					<p>
+						<a href={this.props.website}>
+							<i class="fas fa-desktop"></i>
+							{this.props.website}
+						</a>
 					</p>
-					<span className="boldLabel">
-						<a href={this.props.website}>Website</a>
-					</span>
-					{/* <p><span className="boldLabel">Cohort: </span> </p> */}
 
 					<p>
 						<a href={this.props.github}>

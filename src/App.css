@@ -161,7 +161,8 @@ select {
 }
 
 .fa-github-square,
-.fa-linkedin {
+.fa-linkedin,
+.fa-desktop {
   margin-right: 10px;
 }
 

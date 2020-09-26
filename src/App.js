@@ -18,11 +18,11 @@ class App extends Component {
 			github: '',
 			linkedIn: '',
 			funFact: '',
-			selectedDropDown: 'select',
+			selectedDropDown: null,
 		};
 	}
 
-//****UPDATING STATE THRU COMPONENTDIDMOUNT()
+	//****UPDATING STATE THRU COMPONENTDIDMOUNT()
 	componentDidMount() {
 		// call on the database
 		const dbRef = firebase.database().ref();
@@ -53,7 +53,9 @@ class App extends Component {
 		});
 	}
 
-//****EVENT HANDLER FUNCTIONS for FORM.JS -- IS THIS BETTER HERE OR IN FORM? -- ??? and how to push set the state from a child?
+	
+
+	//****EVENT HANDLER FUNCTIONS for FORM.JS
 	handleFirstName = (event) => {
 		this.setState({
 			firstName: event.target.value,
@@ -96,7 +98,15 @@ class App extends Component {
 		});
 	};
 
-	// *****EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit to push to firebase
+	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
+	handleSelect = (event) => {
+		console.log(event.target.value);
+		this.setState({
+			selectedDropDown: event.target.value, 
+		});
+	};
+
+	//**********EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit and pushes to firebase*********/
 	handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -115,7 +125,7 @@ class App extends Component {
 			funFact: this.state.funFact,
 		});
 
-		// reset input field ???**** why is this not working?
+		// resets the form
 		this.setState({
 			firstName: '',
 			lastName: '',
@@ -127,19 +137,9 @@ class App extends Component {
 		});
 	};
 
-//*****EVENT HANDLER FOR DROP-DOWN SELECT - ???  How to connect to value of drop-down? Or does this need to be in DropDown component and if so, how to set state? */
-	handleSelect = (event) => {
+	//  removed handleSelect
 
-		console.log(event.target.value); // doesn't return anything now that event is in DropDown 
-		this.setState({
-			selectedDropDown: event.target.value, // this wasn't saving even when the event listener was actually on this page 
-		});
-		/* ??? if there is a change on the drop-down, JSX WILL DISPLAY FILTERED COHORT */
-		const filteredCohort = this.state.studentCards.filter(
-			(student) => student.cohort === this.state.selectedDropDown);
-		};
-
-//****RENDERING THE INITIAL PAGE
+	//****RENDERING THE INITIAL PAGE
 	render() {
 		return (
 			<div className="App">
@@ -159,28 +159,41 @@ class App extends Component {
 							handleLinkedIn={this.handleLinkedIn}
 							handleFunFact={this.handleFunFact}
 							handleSubmit={this.handleSubmit}
-							
 							// state data used as props in Form
-							lastName={this.lastName}
-							firstName={this.firstName}
-							cohort={this.cohort}
-							website={this.website}
-							github={this.github}
-							linkedIn={this.linkedIn}
-							funFact={this.funFact}
+							// when referencing state, need to add this.state
+							lastName={this.state.lastName}
+							firstName={this.state.firstName}
+							cohort={this.state.cohort}
+							website={this.state.website}
+							github={this.state.github}
+							linkedIn={this.state.linkedIn}
+							funFact={this.state.funFact}
 						/>
 					</div>
 				</header>
 
 				<main>
 					{/* Pulling in DropDown component to render filter menu on page */}
-					<DropDown handleClick={this.handleSelect} selectedDropDown={this.selectedDropDown} />
-
+					<DropDown handleSelect={this.handleSelect} selectedDropDown={this.selectedDropDown} />
 
 					<section className="studentProfiles wrapper">
 						<div className="cardsContainer">
+							{/* render cards based on filter that match cohort #  */}
+							{/*  */}
+
 							{/* mapping over the entire array of all students in the database */}
-							{this.state.studentCards.map((student, index) => {
+
+							{/* {this.state.studentCards.map((student, index) => { */}
+							{this.state.studentCards.filter(student => { 
+								if (this.state.selectedDropDown === null || this.state.selectedDropDown === "null") {
+									return true; // if no cohort in state, return all the students for everything
+								} else if (student.cohort === this.state.selectedDropDown) {
+									return true; // if student cohort property matches the current dropdown, then return true for the filtered array
+								} else {
+									return false; // if all of these fail, returning false - makes the logic more clear
+								} 
+								
+							}).map((student, index) => {
 								return (
 									<StudentDisplay
 										key={index} // to differentiate each record in React
