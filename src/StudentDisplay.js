@@ -17,13 +17,13 @@ class StudentDisplay extends Component {
 					<p>
 						<a href={this.props.github}>
 							<i className="fab fa-github-square"></i>
-							GITHUB
+							{this.props.github}
 						</a>
 					</p>
 					<p>
 						<a href={this.props.linkedIn}>
 							<i className="fab fa-linkedin"></i>
-                            LINKEDIN
+							{this.props.linkedIn}
 						</a>
 					</p>
 					<p>

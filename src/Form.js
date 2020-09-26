@@ -14,34 +14,32 @@ class Form extends Component {
         
         return (
 			<>
-				<p>Survive Juno College's bootcamp? Add your card to the directory!</p>
 				<form>
-					<label htmlFor="firstName" aria-label="enter first name">
-						First Name:
-					</label>
-					<input
-						type="text"
-						id="firstName"
-						name="firstName"
-						onChange={this.props.handleFirstName}
-						value={this.props.firstName}
-						// why do I need to put this value ^ here?
-					></input>
+					<p>Survive Juno College's bootcamp? Add your card to the directory!</p>
+					<div className="inputsFlex">
+						<label htmlFor="firstName" aria-label="enter first name"></label>
+						<input
+							type="text"
+							id="firstName"
+							name="firstName"
+							onChange={this.props.handleFirstName}
+							value={this.props.firstName}
+							// why do I need to put this value ^ here?
+							placeholder="first name"
+						></input>
 
-					<label htmlFor="lastName" aria-label="enter last name">
-						Last Name:
-					</label>
-					<input
-						type="text"
-						id="lastName"
-						name="lastName"
-						onChange={this.props.handleLastName}
-						value={this.props.lastName}
-					></input>
+						<label htmlFor="lastName" aria-label="enter last name"></label>
+						<input
+							type="text"
+							id="lastName"
+							name="lastName"
+							onChange={this.props.handleLastName}
+							value={this.props.lastName}
+							placeholder="last name"
+						></input>
+					</div>
 
-					<label htmlFor="website" aria-label="enter website details">
-						Website
-					</label>
+					<label htmlFor="website" aria-label="enter website address"></label>
 					<input
 						type="text"
 						id="website"
@@ -51,22 +49,36 @@ class Form extends Component {
 						value={this.props.website}
 					></input>
 
-					<label htmlFor="github">Github:</label>
-					<input
-						type="text"
-						id="github"
-						name="github"
-						onChange={this.props.handleGithub}
-						value={this.props.github}
-					></input>
+					<div className="inputsFlex">
+						<label htmlFor="github" aria-label="enter github username"></label>
+						<input
+							type="text"
+							id="github"
+							name="github"
+							onChange={this.props.handleGithub}
+							value={this.props.github}
+							placeholder="github profile"
+						></input>
 
-					<label htmlFor="linkedIn">LinkedIn:</label>
+						<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
+						<input
+							type="text"
+							id="linkedIn"
+							name="linkedIn"
+							onChange={this.props.handleLinkedIn}
+							value={this.props.linkedIn}
+							placeholder="linkedIn profile"
+						></input>
+					</div>
+
+					<label htmlFor="about" aria-label="enter one fun fact about yourself"></label>
 					<input
 						type="text"
-						id="linkedIn"
-						name="linkedIn"
-						onChange={this.props.handleLinkedIn}
-						value={this.props.linkedIn}
+						id="funFact"
+						name="funFact"
+						onChange={this.props.funFact}
+						value={this.props.funFact}
+						placeholder="One fun fact about yourself"
 					></input>
 
 					<button onClick={this.props.handleSubmit}>Submit</button>

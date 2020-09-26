@@ -78,6 +78,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -85,6 +86,31 @@ input {
   border: 0px;
   border-bottom: 2px solid grey;
   padding: 10px;
+  margin: 10px 0px;
+}
+
+input#website {
+  width: 100%;
+}
+
+.inputsFlex {
+  display: flex;
+}
+
+.inputsFlex input {
+  width: 50%;
+  margin-right: 10px;
+}
+
+/* .inputsFlex input:nth-child(even) {
+  margin-right: 0px;
+} */
+
+button {
+  /* width: 150px; */
+  padding: 5px 15px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 /******STUDENT CARD DISPLAY SECTION  */
@@ -105,11 +131,19 @@ main {
 
 .cardsContainer div {
   padding: 30px;
-  margin: 10px 10px 0px 0px;
-  min-height: 200px;
+  margin: 10px;
+  min-height: 250px;
   background-color: #fffaf1;
+  box-shadow: 0px 2px 2px black;
 }
 
+.cardsContainer div:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.cardsContainer div:nth-child(even) {
+  transform: rotate(1deg);
+}
 
 @media (max-width: 1024px) {
   .cardsContainer {
