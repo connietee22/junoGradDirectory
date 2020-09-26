@@ -55,7 +55,7 @@ input {
 }
 
 .studentName {
-  font-size: clamp(1.4rem, 1.5vw, 2rem);
+  font-size: clamp(1.8rem, 2vw, 2.5rem);
 }
 
 .boldLabel {

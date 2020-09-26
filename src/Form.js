@@ -14,16 +14,42 @@ class Form extends Component {
         
         return (
 			<>
-				<p>Survive Juno College's bootcamp, too? Add your card to the directory!</p>
+				<p>Survive Juno College's bootcamp? Add your card to the directory!</p>
 				<form>
-					<label htmlFor="firstName">First Name:</label>
-					<input type="text" id="firstName" name="firstName" onChange={this.props.handleFirstName}></input>
-					<label htmlFor="lastName">Last Name:</label>
-					<input type="text" id="lastName" name="lastName"></input>
-					<label htmlFor="website" aria-label="input ">
+					<label htmlFor="firstName" aria-label="enter first name">
+						First Name:
+					</label>
+					<input
+						type="text"
+						id="firstName"
+						name="firstName"
+						onChange={this.props.handleFirstName}
+						value={this.props.firstName}
+					></input>
+
+					<label htmlFor="lastName" aria-label="enter last name">
+						Last Name:
+					</label>
+					<input
+						type="text"
+						id="lastName"
+						name="lastName"
+						onChange={this.props.handleLastName}
+						value={this.props.lastName}
+					></input>
+
+					<label htmlFor="website" aria-label="enter website details">
 						Website
 					</label>
-					<input type="text" id="website" name="website" placeholder="website"></input>
+					<input
+						type="text"
+						id="website"
+						name="website"
+						placeholder="website"
+						onChange={this.props.handleWebsite}
+						value={this.props.website}
+					></input>
+
 					<label htmlFor="github">Github:</label>
 					<input type="text" id="github" name="github"></input>
 					<label htmlFor="linkedIn">LinkedIn:</label>

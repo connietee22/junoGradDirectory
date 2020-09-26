@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
-
-// you only need to access one student here so state does not have to be here!
-
+// you only need to access one student here so this does not need to have state!
 class StudentDisplay extends Component {
     render() {
-
         return (
 			<>
 				<div>
-					<p className="studentName boldLabel">First Name: {this.props.firstName}</p>
-					<p className="studentName boldLabel">Last Name: {this.props.lastName}</p>
-					<p><span className="boldLabel">Website: {this.props.website}</span></p>
+					<p className="studentName boldLabel">
+						{this.props.firstName} {this.props.lastName}
+					</p>
+						<span className="boldLabel">
+							<a href={this.props.website}>Website</a>
+						</span>
+				
 					{/* <p><span className="boldLabel">Cohort: </span> </p> */}
 					{/* 
                     <p><i class="fab fa-github-square"></i></p>

@@ -9,10 +9,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			studentCards: [
-				{ firstName: 'connie', lastName: 'tsang', website: 'http://www.etc.com' },
-				{ firstName: 'alex', lastName: 'dodd', website: 'http://www.hello.com' },
-			],
+			studentCards: [],
 			firstName: '',
 			lastName: '',
 			website: '',
@@ -29,7 +26,7 @@ class App extends Component {
 			// creating new array to hold the data
 			const newState = [];
 			const data = response.val();
-			console.log(data);
+	
 
 			for (const key in data) {
 				newState.push({
@@ -87,9 +84,14 @@ class App extends Component {
 
     // console.log(this.state.firstName);
     
+    const newStudentCard = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        website: this.state.website,
+    }
+
 		// add new record to Firebase
-    dbRef.push({ 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'website': this.state.website });
-    console.log(dbRef);
+    dbRef.push(newStudentCard);
 
 		// reset input field
 		this.setState({
@@ -113,14 +115,15 @@ class App extends Component {
 						{/* handlefirstname is a prop that passes in the value of a function */}
 						<Form
 							handleFirstName={this.handleFirstName}
-							handlelastName={this.handleLastName}
+							handleLastName={this.handleLastName}
+							handleWebsite={this.handleWebsite}
 							handleSubmit={this.handleSubmit}
+              lastName={this.lastName}
+              firstName={this.firstName} 
+              website={this.website}
 						/>
 					</div>
 				</header>
-				{/* <section className="gradForm">
-          
-        </section> */}
 
 				{/* mapping over the entire array -- all of the students */}
 				<section className="studentProfiles">
