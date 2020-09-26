@@ -18,7 +18,7 @@ class App extends Component {
 		};
 	}
 
-	// updating this.state through this
+	// updating state through componentDidMount
 	componentDidMount() {
 		// call on the database
 		const dbRef = firebase.database().ref();
@@ -53,14 +53,12 @@ class App extends Component {
 	// call the handle change function in the form
 	// pass the info from form into the function call as an argument
 	handleFirstName = (event) => {
-		console.log(event.target.value);
 		this.setState({
 			firstName: event.target.value,
 		});
 	};
 
 	handleLastName = (event) => {
-		console.log(event.target.value);
 		this.setState({
 			lastName: event.target.value,
 		});
@@ -94,23 +92,34 @@ class App extends Component {
 		event.preventDefault();
 
 		// open portal to Firebase
-		const dbRef = firebase.database().ref();
+    const dbRef = firebase.database().ref();
 
-		const newStudentCard = {
+    // changes the state for individual data
+    this.setState ({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
-			website: this.state.website,
-		};
+      website: this.state.website,
+      github: this.state.github,
+      linkedIn: this.state.linkedIn,
+    });
 
 		// add new record to Firebase
-		dbRef.push(newStudentCard);
+    dbRef.push({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      website: this.state.website,
+      github: this.state.github,
+      linkedIn: this.state.linkedIn,
+    });
 
 		// reset input field
-		this.setState({
-			firstName: '',
-			lastName: '',
-			website: '',
-		});
+		// this.setState({
+		// 	firstName: '',
+		// 	lastName: '',
+    //   website: '',
+    //   github: '',
+    //   linkedIn: '',
+		// });
 	};
 
 	//  const dbRef = firebase.database().ref();
@@ -135,14 +144,16 @@ class App extends Component {
 							handleSubmit={this.handleSubmit}
 							lastName={this.lastName}
 							firstName={this.firstName}
-							website={this.website}
+              website={this.website}
+              github={this.github}
+              linkedIn={this.linkedIn}
 						/>
 					</div>
 				</header>
 
 				{/* mapping over the entire array -- all of the students */}
 				<main>
-					<section class="studentProfiles wrapper">
+					<section className="studentProfiles wrapper">
 						<div className="cardsContainer">
 							{this.state.studentCards.map((student, index) => {
 								return (
@@ -150,7 +161,9 @@ class App extends Component {
 										key={index}
 										firstName={student.firstName} // the value doesn't matter here --
 										lastName={student.lastName}
-										website={student.website}
+                    website={student.website}
+                    github={student.github}
+                    linkedIn={student.linkedIn}
 									/>
 								);
 							})}

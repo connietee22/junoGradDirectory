@@ -52,11 +52,23 @@ class Form extends Component {
 					></input>
 
 					<label htmlFor="github">Github:</label>
-					<input type="text" id="github" name="github" onChange={this.props.github}></input>
+					<input
+						type="text"
+						id="github"
+						name="github"
+						onChange={this.props.handleGithub}
+						value={this.props.github}
+					></input>
 
 					<label htmlFor="linkedIn">LinkedIn:</label>
-					<input type="text" id="linkedIn" name="linkedIn" onChange={this.props.handleLinkedIn}></input>
-                    
+					<input
+						type="text"
+						id="linkedIn"
+						name="linkedIn"
+						onChange={this.props.handleLinkedIn}
+						value={this.props.linkedIn}
+					></input>
+
 					<button onClick={this.props.handleSubmit}>Submit</button>
 				</form>
 			</>

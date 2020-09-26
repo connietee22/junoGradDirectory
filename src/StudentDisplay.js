@@ -5,25 +5,31 @@ class StudentDisplay extends Component {
     render() {
         return (
 			<>
-                <div>
-                    <p className="studentName boldLabel">
-                        {this.props.firstName} {this.props.lastName}
-                    </p>
-                    <span className="boldLabel">
-                        <a href={this.props.website}>Website</a>
-                    </span>
-                    {/* <p><span className="boldLabel">Cohort: </span> </p> */}
+				<div>
+					<p className="studentName boldLabel">
+						{this.props.firstName} {this.props.lastName}
+					</p>
+					<span className="boldLabel">
+						<a href={this.props.website}>Website</a>
+					</span>
+					{/* <p><span className="boldLabel">Cohort: </span> </p> */}
 
-                    <p>
-                        <i class="fab fa-github-square"></i>
-                    </p>
-                    <p>
-                        <i class="fab fa-linkedin"></i>
-                    </p>
-                    <p>
-                        <span className="boldLabel">About Me:</span>
-                    </p>
-                </div>
+					<p>
+						<a href={this.props.github}>
+							<i className="fab fa-github-square"></i>
+							GITHUB
+						</a>
+					</p>
+					<p>
+						<a href={this.props.linkedIn}>
+							<i className="fab fa-linkedin"></i>
+                            LINKEDIN
+						</a>
+					</p>
+					<p>
+						<span className="boldLabel">About Me:</span>
+					</p>
+				</div>
 			</>
 		);
     }
