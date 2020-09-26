@@ -3,6 +3,7 @@ import './App.css';
 import firebase from './firebase';
 import StudentDisplay from './StudentDisplay.js'
 import Form from './Form.js'
+import DropDown from './DropDown.js'
 
 class App extends Component {
 	//  creating the state data
@@ -12,6 +13,7 @@ class App extends Component {
 			studentCards: [],
 			firstName: '',
 			lastName: '',
+			cohort: null,
 			website: '',
 			github: '',
 			linkedIn: '',
@@ -36,6 +38,7 @@ class App extends Component {
 					key: key,
 					firstName: data[key].firstName,
 					lastName: data[key].lastName,
+					cohort: data[key].cohort,
 					website: data[key].website,
 					github: data[key].github,
 					linkedIn: data[key].linkedIn,
@@ -63,6 +66,12 @@ class App extends Component {
 		});
 	};
 
+	handleCohort = (event) => {
+		this.setState({
+			cohort: event.target.value, // this is returning as undefined
+		});
+	};
+
 	handleWebsite = (event) => {
 		this.setState({
 			website: event.target.value,
@@ -87,6 +96,7 @@ class App extends Component {
 		});
 	};
 
+	// *****EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit
 	handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -98,6 +108,7 @@ class App extends Component {
 		this.setState({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
+			cohort: this.state.cohort,
 			website: this.state.website,
 			github: this.state.github,
 			linkedIn: this.state.linkedIn,
@@ -108,6 +119,7 @@ class App extends Component {
 		dbRef.push({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
+			cohort: this.state.cohort,
 			website: this.state.website,
 			github: this.state.github,
 			linkedIn: this.state.linkedIn,
@@ -118,6 +130,7 @@ class App extends Component {
 		this.setState({
 			firstName: '',
 			lastName: '',
+			cohort: '',
 			website: '',
 			github: '',
 			linkedIn: '',
@@ -125,16 +138,16 @@ class App extends Component {
 		});
 	};
 
-//*****EVENT HANDLER FOR DROP-DOWN SELECT - ??? HOW TO CONNECT VALUE OF DROPDOWN */
+	//*****EVENT HANDLER FOR DROP-DOWN SELECT - ??? HOW TO CONNECT VALUE OF DROPDOWN */
 	handleClick = (event) => {
 		console.log(event.target.value); // returns aZ
 		this.setState({
-			selectedDropDown: event.target.value, // this isn't saving
+			selectedDropDown: event.target.value, // this isn't saving (see console log below)
 		});
 		console.log(this.selectedDropDown); // returns undefined
 	};
 
-//****rendering the results on the page
+	//****rendering the results on the page
 	render() {
 		return (
 			<div className="App">
@@ -148,6 +161,7 @@ class App extends Component {
 							/* props that pass in the value of a function */
 							handleFirstName={this.handleFirstName}
 							handleLastName={this.handleLastName}
+							handleCohort={this.handleCohort}
 							handleWebsite={this.handleWebsite}
 							handleGithub={this.handleGithub}
 							handleLinkedIn={this.handleLinkedIn}
@@ -156,6 +170,7 @@ class App extends Component {
 							// state data used as props in Form
 							lastName={this.lastName}
 							firstName={this.firstName}
+							cohort={this.cohort}
 							website={this.website}
 							github={this.github}
 							linkedIn={this.linkedIn}
@@ -165,14 +180,8 @@ class App extends Component {
 				</header>
 
 				<main>
-					{/******DROP-DOWN MENU TO SORT CARDS */}
-					<form>
-						<label htmlFor="sortCards" aria-label="select drop-down option to sort student cards"></label>
-						<select id="sortCards" value={this.state.selectedDropDown} onChange={this.handleClick}>
-							<option value="select">Sort students by:</option>
-							<option value="aZ">A-Z</option>
-						</select>
-					</form>
+					{/* to render drop-down menu on page */}
+					<DropDown handleClick={this.handleClick} selectedDropDown={this.selectedDropDown} />
 
 					{/* JSX TO DISPLAY CORRECT DATA */}
 					{/* { this.state.selectedDropDown == "aZ" ? write code here to go through studentCards state array and alphabetize? : null??? 	 } */}
@@ -187,6 +196,7 @@ class App extends Component {
 										// this is all the state data to be used as props in the StudentDisplay
 										firstName={student.firstName}
 										lastName={student.lastName}
+										cohort={student.cohort}
 										website={student.website}
 										github={student.github}
 										linkedIn={student.linkedIn}

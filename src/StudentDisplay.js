@@ -9,6 +9,8 @@ class StudentDisplay extends Component {
 					<p className="studentName boldLabel">
 						{this.props.firstName} {this.props.lastName}
 					</p>
+					<p className="boldLabel">cohort {this.props.cohort}
+					</p>
 					<span className="boldLabel">
 						<a href={this.props.website}>Website</a>
 					</span>
@@ -28,7 +30,7 @@ class StudentDisplay extends Component {
 					</p>
 					<p>
 						<span className="boldLabel">About Me: </span>
-                        {this.props.funFact}
+						{this.props.funFact}
 					</p>
 				</div>
 			</>

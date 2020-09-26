@@ -27,8 +27,8 @@ class Form extends Component {
 						<input
 							type="text"
 							id="firstName"
-                            name="firstName"
-                            // function will trigger on change of this element - WHY NOT ()??
+							name="firstName"
+							// function will trigger on change of this element - WHY NOT ()??
 							onChange={this.props.handleFirstName}
 							value={this.props.firstName}
 							// why do I need to put this value ^ here?
@@ -45,6 +45,17 @@ class Form extends Component {
 							placeholder="last name"
 						></input>
 					</div>
+
+					<label htmlFor="cohort" aria-label="enter cohort number"></label>
+					<input
+						type="number"
+						id="cohort"
+						name="cohort"
+						className="standAloneInput"
+						placeholder="Cohort number"
+						onChange={this.props.handleCohort}
+						value={this.props.cohort}
+					></input>
 
 					<label htmlFor="website" aria-label="enter website address"></label>
 					<input
