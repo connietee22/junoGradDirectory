@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
 import ScrollTop from 'react-scrolltop-button';
-import StudentDisplay from './StudentDisplay.js'
-import Form from './Form.js'
-import DropDown from './DropDown.js'
-
+import StudentDisplay from './StudentDisplay.js';
+import Form from './Form.js';
+import DropDown from './DropDown.js';
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -15,7 +14,7 @@ class App extends Component {
 			studentCards: [],
 			firstName: '',
 			lastName: '',
-			cohort: null,
+			cohort: '',
 			website: '',
 			github: '',
 			linkedIn: '',
@@ -128,8 +127,6 @@ class App extends Component {
 			linkedIn: '',
 			funFact: '',
 		});
-
-
 	};
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
@@ -145,7 +142,7 @@ class App extends Component {
 		this.setState({
 			isToggled: !this.state.isToggled,
 		});
-	}
+	};
 
 	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
@@ -249,4 +246,3 @@ class App extends Component {
 }
 
 export default App;
-

@@ -23,7 +23,7 @@ class StudentDisplay extends Component {
 
 					<p>
 						<a href={this.props.website}>
-							<i class="fas fa-desktop"></i>
+							<i className="fas fa-desktop"></i>
 							{this.props.website}
 						</a>
 					</p>

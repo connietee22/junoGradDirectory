@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
+
+
+
 class Form extends Component {
     render () {
-		// console.log(this.props); // will display the object with the method - when we create props, we creaete properties on an object
-		// we need to use the function as an onchange handler
-
-		// keep track of each change in the inputs and store the values in state -- best practice in react
-		// on submit event listener -- needs a function. that wll take all the values in state that turns them into one object that can be pushed to db and studentCard array.
+		
 		// for FORM
 		// define a function
 		// handle change for each input
@@ -20,7 +19,7 @@ class Form extends Component {
 
 		return (
 			<>
-				<form>
+				<form noValidate>
 					<p className="boldLabel">Survived Juno College's bootcamp?</p>
 					<p className="boldLabel">Add your card to the directory!</p>
 					<div className="inputsFlex">
@@ -29,11 +28,12 @@ class Form extends Component {
 							type="text"
 							id="firstName"
 							name="firstName"
-							// function will trigger on change of this element - WHY NOT ()??
+							// function will trigger on change of this element
 							onChange={this.props.handleFirstName}
+							// this will always track the changes of the value
 							value={this.props.firstName}
-							// why do I need to put this value ^ here?
 							placeholder="first name"
+							noValidate
 						></input>
 
 						<label htmlFor="lastName" aria-label="enter last name"></label>
@@ -44,6 +44,7 @@ class Form extends Component {
 							onChange={this.props.handleLastName}
 							value={this.props.lastName}
 							placeholder="last name"
+							noValidate
 						></input>
 					</div>
 
@@ -56,6 +57,7 @@ class Form extends Component {
 						placeholder="Cohort number"
 						onChange={this.props.handleCohort}
 						value={this.props.cohort}
+						noValidate
 					></input>
 
 					<label htmlFor="website" aria-label="enter website address"></label>
@@ -67,6 +69,7 @@ class Form extends Component {
 						placeholder="website"
 						onChange={this.props.handleWebsite}
 						value={this.props.website}
+						noValidate
 					></input>
 
 					<div className="inputsFlex">
@@ -78,6 +81,7 @@ class Form extends Component {
 							onChange={this.props.handleGithub}
 							value={this.props.github}
 							placeholder="github profile"
+							noValidate
 						></input>
 
 						<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
@@ -88,6 +92,7 @@ class Form extends Component {
 							onChange={this.props.handleLinkedIn}
 							value={this.props.linkedIn}
 							placeholder="linkedIn profile"
+							noValidate
 						></input>
 					</div>
 
@@ -101,8 +106,8 @@ class Form extends Component {
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
 					></textarea>
-					
-					<button onClick={this.props.handleSubmit} href="#main">
+
+					<button onClick={this.props.handleSubmit} href="#main" noValidate>
 						Submit
 					</button>
 				</form>
