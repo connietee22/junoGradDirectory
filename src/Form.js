@@ -18,7 +18,6 @@ class Form extends Component {
 				<form>
 					<p className="boldLabel">Survived Juno College's bootcamp?</p>
 					<p className="boldLabel">Add your card to the directory!</p>
-					<div className="inputsFlex">
 						<label htmlFor="firstName" aria-label="enter first name"></label>
 						<input
 							type="text"
@@ -29,7 +28,6 @@ class Form extends Component {
 							// this will always track the changes of the value
 							value={this.props.firstName}
 							placeholder="first name"
-							noValidate
 						></input>
 
 						<label htmlFor="lastName" aria-label="enter last name"></label>
@@ -37,13 +35,10 @@ class Form extends Component {
 							type="text"
 							id="lastName"
 							name="lastName"
-							// onChange={this.props.handleLastName}
 							onChange={this.props.handleChange}
 							value={this.props.lastName}
 							placeholder="last name"
-							noValidate
 						></input>
-					</div>
 
 					<label htmlFor="cohort" aria-label="enter cohort number"></label>
 					<input
@@ -53,9 +48,8 @@ class Form extends Component {
 						className="standAloneInput"
 						placeholder="Cohort number"
 						onChange={this.props.handleChange}
-						// onChange={this.props.handleCohort}
 						value={this.props.cohort}
-						noValidate
+						pattern="[0-9]"
 					></input>
 
 					<label htmlFor="website" aria-label="enter website address"></label>
@@ -66,22 +60,20 @@ class Form extends Component {
 						className="standAloneInput"
 						placeholder="website"
 						onChange={this.props.handleChange}
-						// onChange={this.props.handleWebsite}
 						value={this.props.website}
-						noValidate
-					></input>
+						pattern="https?://.+"
+						title="Include http://"
+					>
+					</input>
 
-					<div className="inputsFlex">
 						<label htmlFor="github" aria-label="enter github username"></label>
 						<input
 							type="url"
 							id="github"
 							name="github"
 							onChange={this.props.handleChange}
-							// onChange={this.props.handleGithub}
 							value={this.props.github}
 							placeholder="github username"
-							noValidate
 						></input>
 
 						<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
@@ -90,12 +82,9 @@ class Form extends Component {
 							id="linkedIn"
 							name="linkedIn"
 							onChange={this.props.handleChange}
-							// onChange={this.props.handleLinkedIn}
 							value={this.props.linkedIn}
 							placeholder="linkedIn username"
-							noValidate
 						></input>
-					</div>
 
 					<label htmlFor="funFact" aria-label="enter one fun fact about yourself"></label>
 					<textarea
@@ -104,12 +93,11 @@ class Form extends Component {
 						name="funFact"
 						className="standAloneInput"
 						onChange={this.props.handleChange}
-						// onChange={this.props.handleFunFact}
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
 					></textarea>
 
-					<button onClick={this.props.handleSubmit} href="#main" noValidate>
+					<button onClick={this.props.handleSubmit} href="#main">
 						Submit
 					</button>
 				</form>

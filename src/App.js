@@ -6,6 +6,14 @@ import StudentDisplay from './StudentDisplay.js';
 import Form from './Form.js';
 import DropDown from './DropDown.js';
 
+// from multiple stackoverflow sources 
+// const validRegHtml = RegExp('^(https?:\\/\\/)?'+ // protocol
+//   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+//   '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+//   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+//   '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+//   '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+
 class App extends Component {
 	//************CREATING STATE DATA*********************/
 	constructor() {
@@ -17,8 +25,14 @@ class App extends Component {
 			cohort: 0,
 			website: '',
 			github: '',
-			linkedIn: '',
+			linkedIn:'',
 			funFact: '',
+			// errors: {
+			// 	firstName: 'Enter a first name!',
+			// 	lastName: ['Get your last name in here!'],
+			// 	cohort: ['Numbers only!'],
+			// 	website: ['Don\'t see a valid website here!'],
+			// },
 			selectedDropDown: 'reset',
 			isToggled: false,
 		};
@@ -58,6 +72,33 @@ class App extends Component {
 	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
 	handleChange = (event) => {
 		const value = event.target.value;
+		// let errors = this.state.errors;
+
+		// switch (name) {
+		// 	case 'firstName': 
+		// 	errors.firstName = 
+		// 		value.length < 2 
+		// 		? 'Give us a name!!'
+		// 		: '';
+		// 	break;
+		// 	case 'website': 
+		// 	errors.website = validRegHtml.test(value)
+		// 		? ''
+		// 		: 'Website is not valid!';
+		// 	break;
+		// 	// case 'password': 
+		// 	// errors.password = 
+		// 	// 	value.length < 8
+		// 	// 	? 'Password must be 8 characters long!'
+		// 	// 	: '';
+		// 	// break;
+		// 	default:
+		// 	break;
+		// }
+
+		// this.setState({errors, [name]: value}, ()=> {
+		// 	console.log(errors)
+		// })
 		this.setState({
 			// this code with help from https://www.pluralsight.com
 			...this.state,
@@ -88,7 +129,7 @@ class App extends Component {
 		this.setState({
 			firstName: '',
 			lastName: '',
-			cohort: null,
+			cohort: 0,
 			website: '',
 			github: '',
 			linkedIn: '',
