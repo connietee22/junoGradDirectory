@@ -114,7 +114,7 @@ form {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 input,
@@ -158,9 +158,6 @@ select {
   margin-bottom: 20px;
 }
 
-
-
-
 .cardsContainer {
   display: grid;
   grid-template-columns: 33% 33% 33%;
@@ -188,6 +185,10 @@ select {
 .fa-linkedin,
 .fa-desktop {
   margin-right: 10px;
+}
+
+.scroll {
+  width: 5%;
 }
 
 footer {

@@ -101,7 +101,7 @@ class Form extends Component {
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
 					></textarea>
-
+					
 					<button onClick={this.props.handleSubmit} href="#main">
 						Submit
 					</button>

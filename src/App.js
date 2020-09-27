@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
+import ScrollTop from 'react-scrolltop-button';
 import StudentDisplay from './StudentDisplay.js'
 import Form from './Form.js'
 import DropDown from './DropDown.js'
+
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -126,6 +128,8 @@ class App extends Component {
 			linkedIn: '',
 			funFact: '',
 		});
+
+
 	};
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
@@ -160,7 +164,7 @@ class App extends Component {
 				</header>
 				<section className="wrapper">
 					<div className="formToFill">
-					{/* to render Form on page when  "isToggle" switches to true */}
+						{/* to render Form on page when  "isToggle" switches to true */}
 						{this.state.isToggled && (
 							<Form
 								/* props that pass in the value of a function */
@@ -181,6 +185,8 @@ class App extends Component {
 								linkedIn={this.state.linkedIn}
 								funFact={this.state.funFact}
 							/>
+
+							// { have a state that checks if all items in form are filled }
 						)}
 					</div>
 				</section>
@@ -219,6 +225,7 @@ class App extends Component {
 									);
 								})}
 						</div>
+						<ScrollTop text="▲" className="scroll" />
 					</section>
 				</main>
 				<footer className="wrapper">
