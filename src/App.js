@@ -14,7 +14,7 @@ class App extends Component {
 			studentCards: [],
 			firstName: '',
 			lastName: '',
-			cohort: '',
+			cohort: 0,
 			website: '',
 			github: '',
 			linkedIn: '',
@@ -55,46 +55,13 @@ class App extends Component {
 		});
 	}
 
-	//********EVENT HANDLER FUNCTIONS TO UPDATE FORM INPUT STATE VALUES *****************************//
-	handleFirstName = (event) => {
+	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
+	handleChange = (event) => {
+		const value = event.target.value;
 		this.setState({
-			firstName: event.target.value,
-		});
-	};
-
-	handleLastName = (event) => {
-		this.setState({
-			lastName: event.target.value,
-		});
-	};
-
-	handleCohort = (event) => {
-		this.setState({
-			cohort: event.target.value, // this is returning as undefined
-		});
-	};
-
-	handleWebsite = (event) => {
-		this.setState({
-			website: event.target.value,
-		});
-	};
-
-	handleGithub = (event) => {
-		this.setState({
-			github: event.target.value,
-		});
-	};
-
-	handleLinkedIn = (event) => {
-		this.setState({
-			linkedIn: event.target.value,
-		});
-	};
-
-	handleFunFact = (event) => {
-		this.setState({
-			funFact: event.target.value,
+			// this code with help from https://www.pluralsight.com
+			...this.state,
+			[event.target.name]: value,
 		});
 	};
 
@@ -165,13 +132,14 @@ class App extends Component {
 						{this.state.isToggled && (
 							<Form
 								/* props that pass in the value of a function */
-								handleFirstName={this.handleFirstName}
-								handleLastName={this.handleLastName}
-								handleCohort={this.handleCohort}
-								handleWebsite={this.handleWebsite}
-								handleGithub={this.handleGithub}
-								handleLinkedIn={this.handleLinkedIn}
-								handleFunFact={this.handleFunFact}
+								handleChange={this.handleChange}
+								// handleFirstName={this.handleFirstName}
+								// handleLastName={this.handleLastName}
+								// handleCohort={this.handleCohort}
+								// handleWebsite={this.handleWebsite}
+								// handleGithub={this.handleGithub}
+								// handleLinkedIn={this.handleLinkedIn}
+								// handleFunFact={this.handleFunFact}
 								handleSubmit={this.handleSubmit}
 								// state data used as props in Form
 								lastName={this.state.lastName}

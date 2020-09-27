@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 
-
-
 class Form extends Component {
     render () {
 		
@@ -15,11 +13,9 @@ class Form extends Component {
 
 		// onchange event listeners can live in this form and can track the state of them in this form
 
-		// on submit should be in app.js
-
 		return (
 			<>
-				<form noValidate>
+				<form>
 					<p className="boldLabel">Survived Juno College's bootcamp?</p>
 					<p className="boldLabel">Add your card to the directory!</p>
 					<div className="inputsFlex">
@@ -29,7 +25,7 @@ class Form extends Component {
 							id="firstName"
 							name="firstName"
 							// function will trigger on change of this element
-							onChange={this.props.handleFirstName}
+							onChange={this.props.handleChange}
 							// this will always track the changes of the value
 							value={this.props.firstName}
 							placeholder="first name"
@@ -41,7 +37,8 @@ class Form extends Component {
 							type="text"
 							id="lastName"
 							name="lastName"
-							onChange={this.props.handleLastName}
+							// onChange={this.props.handleLastName}
+							onChange={this.props.handleChange}
 							value={this.props.lastName}
 							placeholder="last name"
 							noValidate
@@ -55,7 +52,8 @@ class Form extends Component {
 						name="cohort"
 						className="standAloneInput"
 						placeholder="Cohort number"
-						onChange={this.props.handleCohort}
+						onChange={this.props.handleChange}
+						// onChange={this.props.handleCohort}
 						value={this.props.cohort}
 						noValidate
 					></input>
@@ -67,7 +65,8 @@ class Form extends Component {
 						name="website"
 						className="standAloneInput"
 						placeholder="website"
-						onChange={this.props.handleWebsite}
+						onChange={this.props.handleChange}
+						// onChange={this.props.handleWebsite}
 						value={this.props.website}
 						noValidate
 					></input>
@@ -78,7 +77,8 @@ class Form extends Component {
 							type="url"
 							id="github"
 							name="github"
-							onChange={this.props.handleGithub}
+							onChange={this.props.handleChange}
+							// onChange={this.props.handleGithub}
 							value={this.props.github}
 							placeholder="github profile"
 							noValidate
@@ -89,7 +89,8 @@ class Form extends Component {
 							type="url"
 							id="linkedIn"
 							name="linkedIn"
-							onChange={this.props.handleLinkedIn}
+							onChange={this.props.handleChange}
+							// onChange={this.props.handleLinkedIn}
 							value={this.props.linkedIn}
 							placeholder="linkedIn profile"
 							noValidate
@@ -102,7 +103,8 @@ class Form extends Component {
 						id="funFact"
 						name="funFact"
 						className="standAloneInput"
-						onChange={this.props.handleFunFact}
+						onChange={this.props.handleChange}
+						// onChange={this.props.handleFunFact}
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
 					></textarea>
