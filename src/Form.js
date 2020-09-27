@@ -21,8 +21,8 @@ class Form extends Component {
 		return (
 			<>
 				<form>
-					<p>Survived Juno College's bootcamp?</p>
-					<p>Add your card to the directory!</p>
+					<p className="boldLabel">Survived Juno College's bootcamp?</p>
+					<p className="boldLabel">Add your card to the directory!</p>
 					<div className="inputsFlex">
 						<label htmlFor="firstName" aria-label="enter first name"></label>
 						<input
@@ -102,7 +102,9 @@ class Form extends Component {
 						placeholder="One fun fact about yourself"
 					></textarea>
 
-					<button onClick={this.props.handleSubmit} href="#main">Submit</button>
+					<button onClick={this.props.handleSubmit} href="#main">
+						Submit
+					</button>
 				</form>
 			</>
 		);
