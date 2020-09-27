@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 // importing the database
 import 'firebase/database';
+import 'firebase/storage';
 
 // grad directory app's Firebase configuration
 const firebaseConfig = {
@@ -15,6 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
 
-export default firebase;
 
+export { storage, firebase as default };
