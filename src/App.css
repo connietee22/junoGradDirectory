@@ -71,7 +71,8 @@ textarea {
 }
 
 .boldLabel,
-button {
+button,
+footer {
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -106,6 +107,7 @@ button {
   width: 462px;
   margin: 0 auto;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -143,6 +145,11 @@ main {
   background: url('./assets/josephine-bredehoft-unsplash.jpg'); 
   /* credit <span>Photo by <a href="https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Josephine Bredehoft</a> on <a href="https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */
   padding: 60px 0;
+  min-height: 70vh;
+}
+
+main form {
+  padding: 0px;
 }
 
 select {
@@ -150,6 +157,9 @@ select {
   padding: 10px 30px 10px 20px;
   margin-bottom: 20px;
 }
+
+
+
 
 .cardsContainer {
   display: grid;
@@ -178,6 +188,15 @@ select {
 .fa-linkedin,
 .fa-desktop {
   margin-right: 10px;
+}
+
+footer {
+  padding: 10px 0px;
+}
+
+.footerFlex {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 1024px) {

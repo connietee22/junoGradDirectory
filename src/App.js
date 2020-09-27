@@ -160,6 +160,7 @@ class App extends Component {
 				</header>
 				<section className="wrapper">
 					<div className="formToFill">
+					{/* to render Form on page when  "isToggle" switches to true */}
 						{this.state.isToggled && (
 							<Form
 								/* props that pass in the value of a function */
@@ -181,10 +182,6 @@ class App extends Component {
 								funFact={this.state.funFact}
 							/>
 						)}
-
-						{/* {this.state.isToggled ? SHOW FORM : HIDE FORM} */}
-
-						{/* rendering Form on page */}
 					</div>
 				</section>
 
@@ -224,7 +221,21 @@ class App extends Component {
 						</div>
 					</section>
 				</main>
-				<footer>Created by Connie Tsang at Juno College</footer>
+				<footer className="wrapper">
+					<div className="footerFlex">
+						<p>Created by Connie Tsang at Juno College</p>
+						<p>
+							Photo by{' '}
+							<a href="https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+								Josephine Bredehoft
+							</a>{' '}
+							on{' '}
+							<a href="https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+								Unsplash
+							</a>
+						</p>
+					</div>
+				</footer>
 			</div>
 		);
 	}
