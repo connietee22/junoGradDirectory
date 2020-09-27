@@ -6,7 +6,7 @@ import Form from './Form.js'
 import DropDown from './DropDown.js'
 
 class App extends Component {
-	//  creating the state data
+	//************CREATING STATE DATA*********************/
 	constructor() {
 		super();
 		this.state = {
@@ -18,11 +18,12 @@ class App extends Component {
 			github: '',
 			linkedIn: '',
 			funFact: '',
-			selectedDropDown: null,
+			selectedDropDown: 'reset',
+			isToggled: false,
 		};
 	}
 
-	//****UPDATING STATE THRU COMPONENTDIDMOUNT()
+	//***********UPDATING STATE THRU COMPONENTDIDMOUNT()*************************//
 	componentDidMount() {
 		// call on the database
 		const dbRef = firebase.database().ref();
@@ -53,9 +54,7 @@ class App extends Component {
 		});
 	}
 
-	
-
-	//****EVENT HANDLER FUNCTIONS for FORM.JS
+	//********EVENT HANDLER FUNCTIONS TO UPDATE FORM INPUT STATE VALUES *****************************//
 	handleFirstName = (event) => {
 		this.setState({
 			firstName: event.target.value,
@@ -98,15 +97,7 @@ class App extends Component {
 		});
 	};
 
-	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
-	handleSelect = (event) => {
-		console.log(event.target.value);
-		this.setState({
-			selectedDropDown: event.target.value, 
-		});
-	};
-
-	//**********EVENT LISTENER FOR FORM SUBMIT -- compiles all information on form submit and pushes to firebase*********/
+	//**********EVENT LISTENER FOR FORM SUBMIT -- compiles all info on form submit and pushes to firebase*********/
 	handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -137,9 +128,22 @@ class App extends Component {
 		});
 	};
 
-	//  removed handleSelect
+	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
+	handleSelect = (event) => {
+		this.setState({
+			selectedDropDown: event.target.value,
+		});
+	};
 
-	//****RENDERING THE INITIAL PAGE
+	//*********EVENT HANDLER FOR BUTTON TO SHOW FORM***********/
+
+	handleButton = () => {
+		this.setState({
+			isToggled: !this.state.isToggled,
+		});
+	}
+
+	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
 		return (
 			<div className="App">
@@ -147,67 +151,76 @@ class App extends Component {
 					<h1>
 						<span className="junoType">Juno College</span>Grad Directory
 					</h1>
-					<div className="formToFill">
-						{/* rendering Form on page */}
-						<Form
-							/* props that pass in the value of a function */
-							handleFirstName={this.handleFirstName}
-							handleLastName={this.handleLastName}
-							handleCohort={this.handleCohort}
-							handleWebsite={this.handleWebsite}
-							handleGithub={this.handleGithub}
-							handleLinkedIn={this.handleLinkedIn}
-							handleFunFact={this.handleFunFact}
-							handleSubmit={this.handleSubmit}
-							// state data used as props in Form
-							// when referencing state, need to add this.state
-							lastName={this.state.lastName}
-							firstName={this.state.firstName}
-							cohort={this.state.cohort}
-							website={this.state.website}
-							github={this.state.github}
-							linkedIn={this.state.linkedIn}
-							funFact={this.state.funFact}
-						/>
+					<div className="headerButtons">
+						<button onClick={this.handleButton}>Add my name!</button>
+						<a href="#main">
+							<button>Just browse</button>
+						</a>
 					</div>
 				</header>
+				<section className="wrapper">
+					<div className="formToFill">
+						{this.state.isToggled && (
+							<Form
+								/* props that pass in the value of a function */
+								handleFirstName={this.handleFirstName}
+								handleLastName={this.handleLastName}
+								handleCohort={this.handleCohort}
+								handleWebsite={this.handleWebsite}
+								handleGithub={this.handleGithub}
+								handleLinkedIn={this.handleLinkedIn}
+								handleFunFact={this.handleFunFact}
+								handleSubmit={this.handleSubmit}
+								// state data used as props in Form
+								lastName={this.state.lastName}
+								firstName={this.state.firstName}
+								cohort={this.state.cohort}
+								website={this.state.website}
+								github={this.state.github}
+								linkedIn={this.state.linkedIn}
+								funFact={this.state.funFact}
+							/>
+						)}
 
-				<main>
-					{/* Pulling in DropDown component to render filter menu on page */}
+						{/* {this.state.isToggled ? SHOW FORM : HIDE FORM} */}
+
+						{/* rendering Form on page */}
+					</div>
+				</section>
+
+				<main id="main">
+					{/* Pulling in DropDown component to render the filter dropdown on page */}
 					<DropDown handleSelect={this.handleSelect} selectedDropDown={this.selectedDropDown} />
 
 					<section className="studentProfiles wrapper">
 						<div className="cardsContainer">
 							{/* render cards based on filter that match cohort #  */}
-							{/*  */}
-
-							{/* mapping over the entire array of all students in the database */}
-
-							{/* {this.state.studentCards.map((student, index) => { */}
-							{this.state.studentCards.filter(student => { 
-								if (this.state.selectedDropDown === null || this.state.selectedDropDown === "null") {
-									return true; // if no cohort in state, return all the students for everything
-								} else if (student.cohort === this.state.selectedDropDown) {
-									return true; // if student cohort property matches the current dropdown, then return true for the filtered array
-								} else {
-									return false; // if all of these fail, returning false - makes the logic more clear
-								} 
-								
-							}).map((student, index) => {
-								return (
-									<StudentDisplay
-										key={index} // to differentiate each record in React
-										// this is all the state data to be used as props in the StudentDisplay
-										firstName={student.firstName}
-										lastName={student.lastName}
-										cohort={student.cohort}
-										website={student.website}
-										github={student.github}
-										linkedIn={student.linkedIn}
-										funFact={student.funFact}
-									/>
-								);
-							})}
+							{/* map over all the students based on the filter results */}
+							{this.state.studentCards
+								.filter((student) => {
+									if (this.state.selectedDropDown === 'reset') {
+										return true; // if no cohort is chosen from the drop-down menu, return all the students
+									} else if (student.cohort === this.state.selectedDropDown) {
+										return true; // if student cohort property matches the current dropdown, then return everything in this filter
+									} else {
+										return false; // if any other possible mistake, return false
+									}
+								})
+								.map((student, index) => {
+									return (
+										<StudentDisplay
+											key={index} // to differentiate each record in React
+											// this is all the state data to be used as props in the StudentDisplay
+											firstName={student.firstName}
+											lastName={student.lastName}
+											cohort={student.cohort}
+											website={student.website}
+											github={student.github}
+											linkedIn={student.linkedIn}
+											funFact={student.funFact}
+										/>
+									);
+								})}
 						</div>
 					</section>
 				</main>

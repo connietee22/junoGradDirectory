@@ -21,7 +21,8 @@ class Form extends Component {
 		return (
 			<>
 				<form>
-					<p>Survive Juno College's bootcamp? Add your card to the directory!</p>
+					<p>Survived Juno College's bootcamp?</p>
+					<p>Add your card to the directory!</p>
 					<div className="inputsFlex">
 						<label htmlFor="firstName" aria-label="enter first name"></label>
 						<input

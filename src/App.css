@@ -9,13 +9,13 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 /*****GENERAL STYLES */
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: #fffaf1;
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
-  scroll-behavior: smooth;
 }
 
 textarea {
@@ -39,9 +39,9 @@ img {
 h1 {
   font-family: 'Barrio', cursive;
   font-weight: bold;
-  font-size: clamp(5rem, 5vw, 7rem);
+  font-size: clamp(5.5rem, 5.5vw, 7rem);
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 p {
@@ -69,7 +69,8 @@ textarea {
   font-size: clamp(2rem, 2.3vw, 2.5rem);
 }
 
-.boldLabel {
+.boldLabel,
+button {
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -77,18 +78,39 @@ textarea {
 header {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  padding: 50px 0px;
   justify-content: center;
   align-items: center;
 }
 
+.headerButtons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 462px;
+}
+
+button {
+  background-color: lightgray;
+  border: 0px solid transparent;
+  border-radius: 3px;
+  padding: 5px 15px;
+  margin-top: 10px;
+  text-align: center;
+}
+
 /*******FORM STYLES */
+
+.formToFill {
+  width: 462px;
+  margin: 0 auto;
+}
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-bottom: 50px;
 }
 
 input,
@@ -113,16 +135,6 @@ textarea {
   margin-right: 10px;
 }
 
-/* .inputsFlex input:nth-child(even) {
-  margin-right: 0px;
-} */
-
-button {
-  /* width: 150px; */
-  padding: 5px 15px;
-  margin-top: 10px;
-  text-align: center;
-}
 
 /******STUDENT CARD DISPLAY SECTION  */
 main {
@@ -174,6 +186,32 @@ select {
 }
 
 @media (max-width: 600px) {
+
+  .inputsFlex {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .inputsFlex input {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  input,
+  textarea {
+    padding: 8px;
+    margin: 8px 0px;
+    width: 100%;
+  }
+
+  .headerButtons {
+    width: 100%;
+  }
+
+  .formToFill {
+    width: 100%;
+  }
+
   .cardsContainer {
     grid-template-columns: 100%;
     grid-template-rows: auto;

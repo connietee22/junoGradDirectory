@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 
 /******DROP-DOWN MENU TO SORT CARDS */
 class DropDown extends Component {
-
-
+    
 	render() {
 		return (
 			<form>
 				<label htmlFor="filterCohort" aria-label="select drop-down option to sort student cards"></label>
 				<select id="filterCohort" value={this.props.selectedDropDown} onChange={this.props.handleSelect}>
-					<option value="null">Filter by cohort:</option>
+					<option value="reset">Filter by cohort:</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
