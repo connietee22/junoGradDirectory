@@ -23,20 +23,20 @@ class StudentDisplay extends Component {
 
 					<p>
 						<a href={this.props.website}>
-							<i className="fas fa-desktop"></i>
+							<i className="fas fa-desktop" aria-hidden="true"></i>
 							{this.props.website}
 						</a>
 					</p>
 
 					<p>
-						<a href={this.props.github}>
-							<i className="fab fa-github-square"></i>
+						<a href={`https://github.com/${this.props.github}`}>
+							<i className="fab fa-github-square" aria-hidden="true"></i>
 							{this.props.github}
 						</a>
 					</p>
 					<p>
-						<a href={this.props.linkedIn}>
-							<i className="fab fa-linkedin"></i>
+						<a href={`https://www.linkedin.com/in/${this.props.linkedIn}`}>
+							<i className="fab fa-linkedin" aria-hidden="true"></i>
 							{this.props.linkedIn}
 						</a>
 					</p>

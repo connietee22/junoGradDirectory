@@ -80,7 +80,7 @@ class Form extends Component {
 							onChange={this.props.handleChange}
 							// onChange={this.props.handleGithub}
 							value={this.props.github}
-							placeholder="github profile"
+							placeholder="github username"
 							noValidate
 						></input>
 
@@ -92,7 +92,7 @@ class Form extends Component {
 							onChange={this.props.handleChange}
 							// onChange={this.props.handleLinkedIn}
 							value={this.props.linkedIn}
-							placeholder="linkedIn profile"
+							placeholder="linkedIn username"
 							noValidate
 						></input>
 					</div>
