@@ -133,13 +133,6 @@ class App extends Component {
 							<Form
 								/* props that pass in the value of a function */
 								handleChange={this.handleChange}
-								// handleFirstName={this.handleFirstName}
-								// handleLastName={this.handleLastName}
-								// handleCohort={this.handleCohort}
-								// handleWebsite={this.handleWebsite}
-								// handleGithub={this.handleGithub}
-								// handleLinkedIn={this.handleLinkedIn}
-								// handleFunFact={this.handleFunFact}
 								handleSubmit={this.handleSubmit}
 								// state data used as props in Form
 								lastName={this.state.lastName}
