@@ -18,22 +18,22 @@ class App extends Component {
 			cohort: 0,
 			website: '',
 			github: '',
-			linkedIn:'',
+			linkedIn: '',
 			funFact: '',
 			selectedDropDown: 'reset',
 			isToggled: false,
 		};
 		this.validator = new SimpleReactValidator({
 			messages: {
-				required: 'Aw! Don\'t leave this field empty!',
-				alpha: 'Are you Elon\'s baby? Proper name, please!',
+				required: "Aw! Don't leave this field empty!",
+				alpha: "Are you Elon's baby? Proper name, please!",
 				alpha_num: 'You sure you typed that right?',
-				alpha_num_dash: 'This doesn\'t look like a Github name'
+				alpha_num_dash: "This doesn't look like a Github name",
 			},
 		});
 	}
 
-	//***********UPDATING STATE THRU COMPONENTDIDMOUNT()*************************//
+	//***********UPDATING STATE*************************//
 	componentDidMount() {
 		// call on the database
 		const dbRef = firebase.database().ref();
@@ -44,6 +44,7 @@ class App extends Component {
 			const newState = [];
 			const data = response.val();
 
+			// on firebase change, push data into newState array
 			for (const key in data) {
 				newState.push({
 					key: key,
@@ -57,7 +58,7 @@ class App extends Component {
 				});
 			}
 
-			// setting the new array of data from firebase into our state array, which we can manipulate for display
+			// setting the new array of data from firebase into our original state array, which we can manipulate for display
 			this.setState({
 				studentCards: newState,
 			});
@@ -67,7 +68,7 @@ class App extends Component {
 	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
 	handleChange = (event) => {
 		const value = event.target.value;
-		
+
 		this.setState({
 			// this code with help from https://www.pluralsight.com
 			...this.state,
@@ -80,65 +81,39 @@ class App extends Component {
 		event.preventDefault();
 
 		if (this.validator.allValid()) {
-	alert('Sweet! You\'re in the directory!');
-	// open portal to Firebase
-		const dbRef = firebase.database().ref();
+			alert("Sweet! You're in the directory!");
+			// open portal to Firebase
+			const dbRef = firebase.database().ref();
 
-		// gather values from all the inputs into an object and
-		// push new student object to Firebase
-		dbRef.push({
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			cohort: this.state.cohort,
-			website: this.state.website,
-			github: this.state.github,
-			linkedIn: this.state.linkedIn,
-			funFact: this.state.funFact,
-		});
+			// gather values from all the inputs into an object and
+			// push new student object to Firebase
+			dbRef.push({
+				firstName: this.state.firstName,
+				lastName: this.state.lastName,
+				cohort: this.state.cohort,
+				website: this.state.website,
+				github: this.state.github,
+				linkedIn: this.state.linkedIn,
+				funFact: this.state.funFact,
+			});
 
-		// resets the form
-		this.setState({
-			firstName: '',
-			lastName: '',
-			cohort: 0,
-			website: '',
-			github: '',
-			linkedIn: '',
-			funFact: '',
-		});
+			// resets the form
+			this.setState({
+				firstName: '',
+				lastName: '',
+				cohort: 0,
+				website: '',
+				github: '',
+				linkedIn: '',
+				funFact: '',
+			});
 		} else {
 			this.validator.showMessages();
 			// rerender to show messages for the first time
 			// you can use the autoForceUpdate option to do this automatically`
 			this.forceUpdate();
 		}
-	}
-		// // open portal to Firebase
-		// const dbRef = firebase.database().ref();
-
-		// // gather values from all the inputs into an object and
-		// // push new student object to Firebase
-		// dbRef.push({
-		// 	firstName: this.state.firstName,
-		// 	lastName: this.state.lastName,
-		// 	cohort: this.state.cohort,
-		// 	website: this.state.website,
-		// 	github: this.state.github,
-		// 	linkedIn: this.state.linkedIn,
-		// 	funFact: this.state.funFact,
-		// });
-
-		// // resets the form
-		// this.setState({
-		// 	firstName: '',
-		// 	lastName: '',
-		// 	cohort: 0,
-		// 	website: '',
-		// 	github: '',
-		// 	linkedIn: '',
-		// 	funFact: '',
-		// });
-	
+	};
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
 	handleSelect = (event) => {
@@ -158,20 +133,20 @@ class App extends Component {
 	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
 		return (
-			<div className="App">
-				<header className="wrapper">
+			<div className='App'>
+				<header className='wrapper'>
 					<h1>
-						<span className="junoType">Juno College</span>Grad Directory
+						<span className='junoType'>Juno College</span>Grad Directory
 					</h1>
-					<div className="headerButtons">
+					<div className='headerButtons'>
 						<button onClick={this.handleButton}>Add my name!</button>
-						<a href="#main">
+						<a href='#main'>
 							<button>Just browse</button>
 						</a>
 					</div>
 				</header>
-				<section className="wrapper">
-					<div className="formToFill">
+				<section className='wrapper'>
+					<div className='formToFill'>
 						{/* to render Form on page when  "isToggle" switches to true */}
 						{this.state.isToggled && (
 							<Form
@@ -194,12 +169,12 @@ class App extends Component {
 					</div>
 				</section>
 
-				<main id="main">
+				<main id='main'>
 					{/* Pulling in DropDown component to render the filter dropdown on page */}
 					<DropDown handleSelect={this.handleSelect} selectedDropDown={this.selectedDropDown} />
 
-					<section className="studentProfiles wrapper">
-						<div className="cardsContainer">
+					<section className='studentProfiles wrapper'>
+						<div className='cardsContainer'>
 							{/* render cards based on filter that match cohort #  */}
 							{/* map over all the students based on the filter results */}
 							{this.state.studentCards
@@ -228,19 +203,19 @@ class App extends Component {
 									);
 								})}
 						</div>
-						<ScrollTop text="▲" className="scroll" />
+						<ScrollTop text='▲' className='scroll' />
 					</section>
 				</main>
-				<footer className="wrapper">
-					<div className="footerFlex">
+				<footer className='wrapper'>
+					<div className='footerFlex'>
 						<p>Created by Connie Tsang at Juno College</p>
 						<p>
 							Photo by{' '}
-							<a href="https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+							<a href='https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'>
 								Josephine Bredehoft
 							</a>{' '}
 							on{' '}
-							<a href="https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+							<a href='https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'>
 								Unsplash
 							</a>
 						</p>
