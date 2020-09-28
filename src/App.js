@@ -106,16 +106,16 @@ class App extends Component {
 				github: '',
 				linkedIn: '',
 				funFact: '',
-				formComplete: true,
-				isToggled: false,
+				formComplete: '',
+				isToggled: '',
 			});
+			document.getElementById('mainForm').reset();
 		} else {
 			this.validator.showMessages();
 			// rerender to show messages for the first time
 			// you can use the autoForceUpdate option to do this automatically`
-			this.forceUpdate();
+			// this.forceUpdate();
 		}
-		document.getElementById('mainForm').reset();
 	};
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
