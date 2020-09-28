@@ -67,33 +67,7 @@ class App extends Component {
 	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
 	handleChange = (event) => {
 		const value = event.target.value;
-		// let errors = this.state.errors;
-
-		// switch (name) {
-		// 	case 'firstName': 
-		// 	errors.firstName = 
-		// 		value.length < 2 
-		// 		? 'Give us a name!!'
-		// 		: '';
-		// 	break;
-		// 	case 'website': 
-		// 	errors.website = validRegHtml.test(value)
-		// 		? ''
-		// 		: 'Website is not valid!';
-		// 	break;
-		// 	// case 'password': 
-		// 	// errors.password = 
-		// 	// 	value.length < 8
-		// 	// 	? 'Password must be 8 characters long!'
-		// 	// 	: '';
-		// 	// break;
-		// 	default:
-		// 	break;
-		// }
-
-		// this.setState({errors, [name]: value}, ()=> {
-		// 	console.log(errors)
-		// })
+		
 		this.setState({
 			// this code with help from https://www.pluralsight.com
 			...this.state,
