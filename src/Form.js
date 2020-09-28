@@ -99,6 +99,13 @@ const Form = (props) => {
 				></textarea>
 				{props.validator.message('funFact', props.funFact, 'required')}
 
+				{/***** INPUT - IMAGE UPLOAD */}
+				<input
+					// allows user to dive into file directory and upload image to the browser
+					type='file'
+					onChange={props.handleImageAsFile}
+				/>
+
 				{/**** TO SUBMIT FORM */}
 				<button onClick={props.handleSubmit} href='#main'>
 					Submit

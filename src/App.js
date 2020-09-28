@@ -7,6 +7,11 @@ import StudentDisplay from './StudentDisplay.js';
 import Form from './Form.js';
 import DropDown from './DropDown.js';
 
+// // declaring the states for image upload, courtesy of dev.to
+// const allInputs = { imgUrl: '' };
+// const [imageAsFile, setImageAsFile] = useState('');
+// const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+
 class App extends Component {
 	//************CREATING STATE DATA*********************/
 	constructor() {
@@ -81,7 +86,7 @@ class App extends Component {
 		event.preventDefault();
 
 		if (this.validator.allValid()) {
-			alert("Sweet! You're in the directory!");
+			alert('Sweet! Welcome to the directory!');
 			// open portal to Firebase
 			const dbRef = firebase.database().ref();
 
@@ -130,6 +135,11 @@ class App extends Component {
 		});
 	};
 
+	// handleImageAsFile = (event) => {
+	// 	const image = event.target.files[0];
+	// 	setImageAsFile((imageFile) => image);
+	// };
+
 	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
 		return (
@@ -152,6 +162,7 @@ class App extends Component {
 							<Form
 								/* props that pass in the value of a function */
 								handleChange={this.handleChange}
+								handleImageAsFile={this.handleImageAsFile}
 								handleSubmit={this.handleSubmit}
 								validator={this.validator}
 								// state data used as props in Form
@@ -163,8 +174,6 @@ class App extends Component {
 								linkedIn={this.state.linkedIn}
 								funFact={this.state.funFact}
 							/>
-
-							// { have a state that checks if all items in form are filled }
 						)}
 					</div>
 				</section>
