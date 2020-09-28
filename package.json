@@ -11,7 +11,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "react-scroll": "^1.8.1",
-    "react-scrolltop-button": "^0.1.6"
+    "react-scrolltop-button": "^0.1.6",
+    "simple-react-validator": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

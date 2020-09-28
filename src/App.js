@@ -2,17 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
 import ScrollTop from 'react-scrolltop-button';
+import SimpleReactValidator from 'simple-react-validator';
 import StudentDisplay from './StudentDisplay.js';
 import Form from './Form.js';
 import DropDown from './DropDown.js';
-
-// from multiple stackoverflow sources 
-// const validRegHtml = RegExp('^(https?:\\/\\/)?'+ // protocol
-//   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-//   '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-//   '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-//   '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-//   '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -27,15 +20,17 @@ class App extends Component {
 			github: '',
 			linkedIn:'',
 			funFact: '',
-			// errors: {
-			// 	firstName: 'Enter a first name!',
-			// 	lastName: ['Get your last name in here!'],
-			// 	cohort: ['Numbers only!'],
-			// 	website: ['Don\'t see a valid website here!'],
-			// },
 			selectedDropDown: 'reset',
 			isToggled: false,
 		};
+		this.validator = new SimpleReactValidator({
+			messages: {
+				required: 'Aw! Don\'t leave this field empty!',
+				alpha: 'Are you Elon\'s baby? Proper name, please!',
+				alpha_num: 'You sure you typed that right?',
+				alpha_num_dash: 'This doesn\'t look like a Github name'
+			},
+		});
 	}
 
 	//***********UPDATING STATE THRU COMPONENTDIDMOUNT()*************************//
@@ -110,7 +105,9 @@ class App extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 
-		// open portal to Firebase
+		if (this.validator.allValid()) {
+	alert('Sweet! You\'re in the directory!');
+	// open portal to Firebase
 		const dbRef = firebase.database().ref();
 
 		// gather values from all the inputs into an object and
@@ -135,7 +132,39 @@ class App extends Component {
 			linkedIn: '',
 			funFact: '',
 		});
-	};
+		} else {
+			this.validator.showMessages();
+			// rerender to show messages for the first time
+			// you can use the autoForceUpdate option to do this automatically`
+			this.forceUpdate();
+		}
+	}
+		// // open portal to Firebase
+		// const dbRef = firebase.database().ref();
+
+		// // gather values from all the inputs into an object and
+		// // push new student object to Firebase
+		// dbRef.push({
+		// 	firstName: this.state.firstName,
+		// 	lastName: this.state.lastName,
+		// 	cohort: this.state.cohort,
+		// 	website: this.state.website,
+		// 	github: this.state.github,
+		// 	linkedIn: this.state.linkedIn,
+		// 	funFact: this.state.funFact,
+		// });
+
+		// // resets the form
+		// this.setState({
+		// 	firstName: '',
+		// 	lastName: '',
+		// 	cohort: 0,
+		// 	website: '',
+		// 	github: '',
+		// 	linkedIn: '',
+		// 	funFact: '',
+		// });
+	
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
 	handleSelect = (event) => {
@@ -175,6 +204,7 @@ class App extends Component {
 								/* props that pass in the value of a function */
 								handleChange={this.handleChange}
 								handleSubmit={this.handleSubmit}
+								validator={this.validator}
 								// state data used as props in Form
 								lastName={this.state.lastName}
 								firstName={this.state.firstName}

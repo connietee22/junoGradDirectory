@@ -3,43 +3,41 @@ import React, { Component } from 'react';
 
 class Form extends Component {
     render () {
-		
-		// for FORM
-		// define a function
-		// handle change for each input
-		// pass the function into the form as a prop
-		// call the handle change function in the form
-		// pass the info from form into the function call as an argument
-
-		// onchange event listeners can live in this form and can track the state of them in this form
 
 		return (
 			<>
 				<form>
 					<p className="boldLabel">Survived Juno College's bootcamp?</p>
 					<p className="boldLabel">Add your card to the directory!</p>
-						<label htmlFor="firstName" aria-label="enter first name"></label>
-						<input
-							type="text"
-							id="firstName"
-							name="firstName"
-							// function will trigger on change of this element
-							onChange={this.props.handleChange}
-							// this will always track the changes of the value
-							value={this.props.firstName}
-							placeholder="first name"
-						></input>
 
-						<label htmlFor="lastName" aria-label="enter last name"></label>
-						<input
-							type="text"
-							id="lastName"
-							name="lastName"
-							onChange={this.props.handleChange}
-							value={this.props.lastName}
-							placeholder="last name"
-						></input>
+					{/* INPUT - FIRST NAME */}
+					<label htmlFor="firstName" aria-label="enter first name"></label>
+					<input
+						type="text"
+						id="firstName"
+						name="firstName"
+						// function will trigger on change of this element
+						onChange={this.props.handleChange}
+						// this will always track the changes of the value
+						value={this.props.firstName}
+						placeholder="first name"
+					></input>
+					{/* determines the message to display when inputs are incorrect or missing */}
+					{this.props.validator.message('firstName', this.props.firstName, 'required|alpha')}
 
+					{/* INPUT - LAST NAME */}
+					<label htmlFor="lastName" aria-label="enter last name"></label>
+					<input
+						type="text"
+						id="lastName"
+						name="lastName"
+						onChange={this.props.handleChange}
+						value={this.props.lastName}
+						placeholder="last name"
+					></input>
+					{this.props.validator.message('lastName', this.props.lastName, 'required|alpha')}
+
+					{/* INPUT - COHORT FIELD */}
 					<label htmlFor="cohort" aria-label="enter cohort number"></label>
 					<input
 						type="number"
@@ -49,9 +47,10 @@ class Form extends Component {
 						placeholder="Cohort number"
 						onChange={this.props.handleChange}
 						value={this.props.cohort}
-						pattern="[0-9]"
 					></input>
+					{this.props.validator.message('cohort', this.props.cohort, 'required|numeric|min:1,num|max:29,num')}
 
+					{/* INPUT - WEBSITE FIELD */}
 					<label htmlFor="website" aria-label="enter website address"></label>
 					<input
 						type="url"
@@ -63,29 +62,34 @@ class Form extends Component {
 						value={this.props.website}
 						pattern="https?://.+"
 						title="Include http://"
-					>
-					</input>
+					></input>
+					{this.props.validator.message('website', this.props.website, 'required|url')}
 
-						<label htmlFor="github" aria-label="enter github username"></label>
-						<input
-							type="url"
-							id="github"
-							name="github"
-							onChange={this.props.handleChange}
-							value={this.props.github}
-							placeholder="github username"
-						></input>
+				{/* INPUT - GITHUB FIELD */}
+					<label htmlFor="github" aria-label="enter github username"></label>
+					<input
+						type="text"
+						id="github"
+						name="github"
+						onChange={this.props.handleChange}
+						value={this.props.github}
+						placeholder="github username"
+					></input>
+					{this.props.validator.message('github', this.props.github, 'required|alpha_num_dash')}
 
-						<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
-						<input
-							type="url"
-							id="linkedIn"
-							name="linkedIn"
-							onChange={this.props.handleChange}
-							value={this.props.linkedIn}
-							placeholder="linkedIn username"
-						></input>
+					{/* INPUT - LINKEDIN */}
+					<label htmlFor="linkedIn" aria-label="enter linkedin username"></label>
+					<input
+						type="text"
+						id="linkedIn"
+						name="linkedIn"
+						onChange={this.props.handleChange}
+						value={this.props.linkedIn}
+						placeholder="linkedIn username"
+					></input>
+					{this.props.validator.message('linkedIn', this.props.linkedIn, 'required|alpha_num')}
 
+					{/* INPUT - FUN FACT */}
 					<label htmlFor="funFact" aria-label="enter one fun fact about yourself"></label>
 					<textarea
 						maxLength="100"
@@ -96,7 +100,9 @@ class Form extends Component {
 						value={this.props.funFact}
 						placeholder="One fun fact about yourself"
 					></textarea>
+					{this.props.validator.message('funFact', this.props.funFact, 'required')}
 
+					{/* TO SUBMIT FORM */}
 					<button onClick={this.props.handleSubmit} href="#main">
 						Submit
 					</button>
