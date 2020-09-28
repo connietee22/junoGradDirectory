@@ -20,7 +20,7 @@ const Form = (props) => {
 					placeholder='first name'
 				></input>
 				{/* determines the message to display when inputs are incorrect or missing */}
-				{props.validator.message('firstName', props.firstName, 'required|alpha')}
+				{props.validator.message('firstName', props.firstName, 'required')}
 
 				{/****INPUT - LAST NAME */}
 				<label htmlFor='lastName' aria-label='enter last name'></label>
@@ -32,7 +32,7 @@ const Form = (props) => {
 					value={props.lastName}
 					placeholder='last name'
 				></input>
-				{props.validator.message('lastName', props.lastName, 'required|alpha')}
+				{props.validator.message('lastName', props.lastName, 'required')}
 
 				{/****INPUT - COHORT FIELD */}
 				<label htmlFor='cohort' aria-label='enter cohort number'></label>

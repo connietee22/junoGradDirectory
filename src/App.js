@@ -7,11 +7,6 @@ import StudentDisplay from './StudentDisplay.js';
 import Form from './Form.js';
 import DropDown from './DropDown.js';
 
-// // declaring the states for image upload, courtesy of dev.to
-// const allInputs = { imgUrl: '' };
-// const [imageAsFile, setImageAsFile] = useState('');
-// const [imageAsUrl, setImageAsUrl] = useState(allInputs);
-
 class App extends Component {
 	//************CREATING STATE DATA*********************/
 	constructor() {
@@ -27,11 +22,11 @@ class App extends Component {
 			funFact: '',
 			selectedDropDown: 'reset',
 			isToggled: false,
+			formComplete: false,
 		};
 		this.validator = new SimpleReactValidator({
 			messages: {
 				required: "Aw! Don't leave this field empty!",
-				alpha: "Are you Elon's baby? Proper name, please!",
 				alpha_num: 'You sure you typed that right?',
 				alpha_num_dash: "This doesn't look like a Github name",
 			},
@@ -111,6 +106,8 @@ class App extends Component {
 				github: '',
 				linkedIn: '',
 				funFact: '',
+				formComplete: true,
+				isToggled: false,
 			});
 		} else {
 			this.validator.showMessages();
@@ -135,11 +132,6 @@ class App extends Component {
 		});
 	};
 
-	// handleImageAsFile = (event) => {
-	// 	const image = event.target.files[0];
-	// 	setImageAsFile((imageFile) => image);
-	// };
-
 	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
 		return (
@@ -157,15 +149,19 @@ class App extends Component {
 				</header>
 				<section className='wrapper'>
 					<div className='formToFill'>
-						{/* to render Form on page when  "isToggle" switches to true */}
-						{this.state.isToggled && (
+						{/* to render Form on page when "isToggle" switches to true */}
+						{/* if button iS TRUE and form IS FALSE SHOW,
+						if button is TRUE and form is TRUE, HIDE.  */}
+						{/* (this.state.isToggled || this.state.formComplete) */}
+						{/* is there a way to reset the state when something is closed? */}
+
+						{this.state.isToggled && !this.state.formComplete && (
 							<Form
-								/* props that pass in the value of a function */
 								handleChange={this.handleChange}
 								handleImageAsFile={this.handleImageAsFile}
 								handleSubmit={this.handleSubmit}
 								validator={this.validator}
-								// state data used as props in Form
+								// /* // state data used as props in Form */
 								lastName={this.state.lastName}
 								firstName={this.state.firstName}
 								cohort={this.state.cohort}
