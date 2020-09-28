@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/junoGradDirectory/static/css/main.2be5b70a.chunk.css",
+    "main.js": "/junoGradDirectory/static/js/main.99eaec2a.chunk.js",
+    "main.js.map": "/junoGradDirectory/static/js/main.99eaec2a.chunk.js.map",
+    "runtime-main.js": "/junoGradDirectory/static/js/runtime-main.525595be.js",
+    "runtime-main.js.map": "/junoGradDirectory/static/js/runtime-main.525595be.js.map",
+    "static/js/2.faead675.chunk.js": "/junoGradDirectory/static/js/2.faead675.chunk.js",
+    "static/js/2.faead675.chunk.js.map": "/junoGradDirectory/static/js/2.faead675.chunk.js.map",
+    "index.html": "/junoGradDirectory/index.html",
+    "precache-manifest.16c11f2d012cf1cfed9bc24002d6066a.js": "/junoGradDirectory/precache-manifest.16c11f2d012cf1cfed9bc24002d6066a.js",
+    "service-worker.js": "/junoGradDirectory/service-worker.js",
+    "static/css/main.2be5b70a.chunk.css.map": "/junoGradDirectory/static/css/main.2be5b70a.chunk.css.map",
+    "static/js/2.faead675.chunk.js.LICENSE.txt": "/junoGradDirectory/static/js/2.faead675.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/junoGradDirectory/static/media/josephine-bredehoft-unsplash.199280cf.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.525595be.js",
+    "static/js/2.faead675.chunk.js",
+    "static/css/main.2be5b70a.chunk.css",
+    "static/js/main.99eaec2a.chunk.js"
+  ]
+}
