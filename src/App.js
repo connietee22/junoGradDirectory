@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
-import ScrollTop from 'react-scrolltop-button';
 import SimpleReactValidator from 'simple-react-validator';
 import StudentDisplay from './StudentDisplay.js';
 import Form from './Form.js';
 import DropDown from './DropDown.js';
+import ScrollToTop from 'react-scroll-up';
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -63,6 +63,7 @@ class App extends Component {
 				studentCards: newState,
 			});
 		});
+		// When the user clicks on the button, scroll to the top of the document
 	}
 
 	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
@@ -143,7 +144,9 @@ class App extends Component {
 						<span className='junoType'>Juno College</span>Grad Directory
 					</h1>
 					<div className='headerButtons'>
-						<button onClick={this.handleButton}>Add my name!</button>
+						<button onClick={this.handleButton} href='#main'>
+							Add my name!
+						</button>
 						<a href='#main'>
 							<button>Just browse</button>
 						</a>
@@ -204,7 +207,9 @@ class App extends Component {
 									);
 								})}
 						</div>
-						<ScrollTop text='▲' className='scroll' />
+						<ScrollToTop showUnder={160}>
+							<span className='scroll'>▲</span>
+						</ScrollToTop>
 					</section>
 				</main>
 				<footer className='wrapper'>
