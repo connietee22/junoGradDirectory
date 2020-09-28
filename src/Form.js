@@ -3,7 +3,7 @@ import React from 'react';
 const Form = (props) => {
 	return (
 		<>
-			<form>
+			<form id='mainForm'>
 				<p className='boldLabel'>Survived Juno College's bootcamp?</p>
 				<p className='boldLabel'>Add your card to the directory!</p>
 
@@ -103,13 +103,14 @@ const Form = (props) => {
 				<input
 					// allows user to dive into file directory and upload image to the browser
 					type='file'
+					id='imgUpload'
+					accept='image/png, image/jpeg'
+					name='userImage'
 					onChange={props.handleImageAsFile}
 				/>
 
 				{/**** TO SUBMIT FORM */}
-				<button onClick={props.handleSubmit} href='#main'>
-					Submit
-				</button>
+				<button onClick={props.handleSubmit}>Submit</button>
 			</form>
 		</>
 	);

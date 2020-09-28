@@ -115,6 +115,7 @@ class App extends Component {
 			// you can use the autoForceUpdate option to do this automatically`
 			this.forceUpdate();
 		}
+		document.getElementById('mainForm').reset();
 	};
 
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
@@ -129,6 +130,7 @@ class App extends Component {
 	handleButton = () => {
 		this.setState({
 			isToggled: !this.state.isToggled,
+			formComplete: false,
 		});
 	};
 
@@ -149,12 +151,6 @@ class App extends Component {
 				</header>
 				<section className='wrapper'>
 					<div className='formToFill'>
-						{/* to render Form on page when "isToggle" switches to true */}
-						{/* if button iS TRUE and form IS FALSE SHOW,
-						if button is TRUE and form is TRUE, HIDE.  */}
-						{/* (this.state.isToggled || this.state.formComplete) */}
-						{/* is there a way to reset the state when something is closed? */}
-
 						{this.state.isToggled && !this.state.formComplete && (
 							<Form
 								handleChange={this.handleChange}
