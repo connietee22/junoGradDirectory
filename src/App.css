@@ -367,6 +367,7 @@ textarea {
 
 .boldLabel,
 button,
+.alphaLabel,
 footer {
 	font-weight: 700;
 	text-transform: uppercase;
@@ -375,7 +376,7 @@ footer {
 header {
 	display: flex;
 	flex-direction: column;
-	padding: 60px 0px;
+	padding: 80px 0px;
 	justify-content: center;
 	align-items: center;
 }
@@ -386,7 +387,8 @@ header {
 	width: 462px;
 }
 
-button {
+button,
+.alphaLabel {
 	background-color: lightgray;
 	border: 0px solid transparent;
 	width: 200px;
@@ -421,10 +423,6 @@ textarea {
 	width: 100%;
 }
 
-.standaloneInput input {
-	width: 100%;
-}
-
 .inputsFlex {
 	display: flex;
 }
@@ -451,6 +449,17 @@ select {
 	width: 275px;
 	padding: 10px 20px;
 	margin-bottom: 20px;
+}
+
+.alphaFlex {
+	display: flex;
+	flex-direction: row;
+}
+
+.alphaButton {
+	width: 40px;
+	height: 40px;
+	align-items: center;
 }
 
 .cardsContainer {

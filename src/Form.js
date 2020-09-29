@@ -100,14 +100,14 @@ const Form = (props) => {
 				{props.validator.message('funFact', props.funFact, 'required')}
 
 				{/***** INPUT - IMAGE UPLOAD */}
-				<input
+				{/* <input
 					// allows user to dive into file directory and upload image to the browser
 					type='file'
 					id='imgUpload'
 					accept='image/png, image/jpeg'
 					name='userImage'
 					onChange={props.handleImageAsFile}
-				/>
+				/> */}
 
 				{/**** TO SUBMIT FORM */}
 				<button onClick={props.handleSubmit}>Submit</button>
