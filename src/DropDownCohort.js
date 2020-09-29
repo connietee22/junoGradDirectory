@@ -2,11 +2,11 @@ import React from 'react';
 
 /******DROP-DOWN MENU TO SORT CARDS */
 
-const DropDown = (props) => {
+const DropDownCohort = (props) => {
 
 		return (
             <form>
-                <label htmlFor="filterCohort" aria-label="select drop-down option to sort student cards"></label>
+                <label htmlFor="filterCohort" aria-label="select drop-down option to filter student cards by cohort number"></label>
                 <select id="filterCohort" value={props.selectedDropDown} onChange={props.handleSelect}>
                     <option value="reset">Filter by cohort:</option>
                     <option value="1">1</option>
@@ -45,4 +45,4 @@ const DropDown = (props) => {
 	}
 
 
-export default DropDown;
+export default DropDownCohort;

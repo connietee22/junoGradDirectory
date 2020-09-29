@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
 import SimpleReactValidator from 'simple-react-validator';
-import StudentDisplay from './StudentDisplay.js';
-import Form from './Form.js';
-import DropDown from './DropDown.js';
+import StudentDisplay from './StudentDisplay';
+import Form from './Form';
+import DropDownCohort from './DropDownCohort';
+import NameDropDown from './NameDropDown';
 import ScrollToTop from 'react-scroll-up';
 
 class App extends Component {
@@ -21,9 +22,11 @@ class App extends Component {
 			linkedIn: '',
 			funFact: '',
 			selectedDropDown: 'reset',
+			selectedAlpha: 'reset',
 			isToggled: false,
 			formComplete: false,
 		};
+		// form validator messages if there are errors on particlar inputs
 		this.validator = new SimpleReactValidator({
 			messages: {
 				required: "Aw! Don't leave this field empty!",
@@ -119,10 +122,20 @@ class App extends Component {
 		}
 	};
 
+	handleImageAsFile = (event) => {
+		console.log(event.target.files);
+	};
+
 	//**********EVENT HANDLER FOR DROP-DOWN SELECT***************/
 	handleSelect = (event) => {
 		this.setState({
 			selectedDropDown: event.target.value,
+		});
+	};
+
+	handleAlphaSelect = (event) => {
+		this.setState({
+			selectedAlpha: event.target.value,
 		});
 	};
 
@@ -135,8 +148,55 @@ class App extends Component {
 		});
 	};
 
+	// function to filter cards
+	alphabetizeStudents = (a, b) => {
+		// Using toUpperCase() to ignore character casing, just in case it was entered
+		const nameA = a.firstName.toUpperCase();
+		const nameB = b.firstName.toUpperCase();
+
+		// set comparison number -- this from sitepoint.com
+		let comparison = 0;
+		if (nameA > nameB) {
+			comparison = 1;
+		} else if (nameA < nameB) {
+			comparison = -1;
+		}
+		return comparison;
+	};
+
+	reverseAlphabetize = (a, b) => {
+		// Using toUpperCase() to ignore character casing, just in case it was entered
+		const nameA = a.firstName.toUpperCase();
+		const nameB = b.firstName.toUpperCase();
+
+		// set comparison number -- this from sitepoint.com
+		let comparison = 0;
+		if (nameA > nameB) {
+			comparison = 1;
+		} else if (nameA < nameB) {
+			comparison = -1;
+		}
+		return comparison * -1;
+	};
+
 	//**********RENDERING THE INITIAL PAGE**********************/
 	render() {
+		// create variables
+		// variable for filtering cards
+		const filterCards = this.state.studentCards.filter((student) => {
+			if (this.state.selectedDropDown === 'reset') {
+				return true; // if no cohort is chosen from the drop-down menu, return all the students
+			} else if (student.cohort === this.state.selectedDropDown) {
+				return true; // if student cohort property matches the current dropdown, then return everything in this filter
+			} else {
+				return false; // if any other possible mistake, return false
+			}
+		});
+
+		// const alphaSortedCards = filterCards.sort(this.alphabetizeStudents);
+
+		// const reverseAlphaSortedCards = filterCards.sort(this.reverseAlphabetize);
+
 		return (
 			<div className='App'>
 				<header className='wrapper'>
@@ -175,37 +235,45 @@ class App extends Component {
 
 				<main id='main'>
 					{/* Pulling in DropDown component to render the filter dropdown on page */}
-					<DropDown handleSelect={this.handleSelect} selectedDropDown={this.selectedDropDown} />
+					<DropDownCohort handleSelect={this.handleSelect} selectedDropDown={this.state.selectedDropDown} />
+					<NameDropDown handleAlphaSelect={this.handleAlphaSelect} selectedAlpha={this.state.selectedAlpha} />
 
 					<section className='studentProfiles wrapper'>
 						<div className='cardsContainer'>
 							{/* render cards based on filter that match cohort #  */}
 							{/* map over all the students based on the filter results */}
-							{this.state.studentCards
-								.filter((student) => {
-									if (this.state.selectedDropDown === 'reset') {
-										return true; // if no cohort is chosen from the drop-down menu, return all the students
-									} else if (student.cohort === this.state.selectedDropDown) {
-										return true; // if student cohort property matches the current dropdown, then return everything in this filter
-									} else {
-										return false; // if any other possible mistake, return false
-									}
-								})
-								.map((student, index) => {
-									return (
-										<StudentDisplay
-											key={index} // to differentiate each record in React
-											// this is all the state data to be used as props in the StudentDisplay
-											firstName={student.firstName}
-											lastName={student.lastName}
-											cohort={student.cohort}
-											website={student.website}
-											github={student.github}
-											linkedIn={student.linkedIn}
-											funFact={student.funFact}
-										/>
-									);
-								})}
+							{/* {this.state.selectedAlpha === 'aToZ' && */}
+							{filterCards.map((student, index) => {
+								return (
+									<StudentDisplay
+										key={index} // to differentiate each record in React
+										// this is all the state data to be used as props in the StudentDisplay
+										firstName={student.firstName}
+										lastName={student.lastName}
+										cohort={student.cohort}
+										website={student.website}
+										github={student.github}
+										linkedIn={student.linkedIn}
+										funFact={student.funFact}
+									/>
+								);
+							})}
+
+							{/* (this.reverseAlphabetize).map((student, index) => {
+								return (
+									<StudentDisplay
+										key={index} // to differentiate each record in React
+										// this is all the state data to be used as props in the StudentDisplay
+										firstName={student.firstName}
+										lastName={student.lastName}
+										cohort={student.cohort}
+										website={student.website}
+										github={student.github}
+										linkedIn={student.linkedIn}
+										funFact={student.funFact}
+									/>
+								);
+							})} */}
 						</div>
 						<ScrollToTop showUnder={160}>
 							<span className='scroll'>▲</span>
@@ -216,11 +284,11 @@ class App extends Component {
 					<div className='footerFlex'>
 						<p>Created by Connie Tsang at Juno College</p>
 						<p>
-							Photo by{' '}
+							image by{' '}
 							<a href='https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'>
 								Josephine Bredehoft
-							</a>{' '}
-							on{' '}
+							</a>
+							/
 							<a href='https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'>
 								Unsplash
 							</a>
