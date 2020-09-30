@@ -1,3 +1,4 @@
+/**********SETUP SNIPPET STARTS HERE */
 a,
 abbr,
 acronym,
@@ -300,6 +301,7 @@ textarea {
 	clip: rect(00 0 0);
 	overflow: hidden;
 }
+/*******SETUP SNIPPET ENDS HERE */
 
 /*****GENERAL STYLES */
 html {
@@ -308,9 +310,10 @@ html {
 }
 
 body {
-	background-color: #fffaf1;
-	font-size: 1.6rem;
 	font-family: 'Roboto', sans-serif;
+	font-size: 1.6rem;
+	background-color: #fffaf1;
+	color: #222;
 }
 
 textarea {
@@ -318,26 +321,20 @@ textarea {
 	resize: none;
 }
 
-img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
 .wrapper {
 	width: 90%;
 	max-width: 1150px;
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
-/*******GENERAL FONT STYLING */
+/*************GENERAL FONT STYLING */
 h1 {
 	font-family: 'Barrio', cursive;
 	font-weight: bold;
 	font-size: clamp(5.5rem, 5.5vw, 7rem);
 	text-align: center;
-	padding-bottom: 20px;
 	letter-spacing: 0.25rem;
+	padding-bottom: 20px;
 }
 
 p {
@@ -347,6 +344,10 @@ p {
 a {
 	text-decoration: none;
 	color: #3a2e22;
+}
+
+a:hover {
+	color: #945a2a;
 }
 
 input,
@@ -363,17 +364,20 @@ textarea {
 
 .studentName {
 	font-size: clamp(2rem, 2.2vw, 2.5rem);
+	line-height: 1.2;
 	word-break: break-word;
 }
 
-.boldLabel,
 button,
+footer,
+.boldLabel,
 .alphaLabel,
-.alphaClicked,
-footer {
+.alphaClicked {
 	font-weight: 700;
 	text-transform: uppercase;
 }
+
+/****** HEADER STYLES */
 
 header {
 	display: flex;
@@ -405,7 +409,7 @@ button,
 
 .formToFill {
 	width: 462px;
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
 form {
@@ -417,17 +421,17 @@ form {
 	padding-bottom: 60px;
 }
 
+.inputsFlex {
+	display: flex;
+}
+
 input,
 textarea {
+	width: 100%;
 	border: 0px;
 	border-bottom: 2px solid grey;
 	padding: 10px;
 	margin: 10px 0px;
-	width: 100%;
-}
-
-.inputsFlex {
-	display: flex;
 }
 
 .inputsFlex input {
@@ -437,10 +441,9 @@ textarea {
 
 /******STUDENT CARD DISPLAY SECTION  */
 main {
-	background: url('./assets/josephine-bredehoft-unsplash.jpg');
-	/* credit <span>Photo by <a href="https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Josephine Bredehoft</a> on <a href="https://unsplash.com/s/photos/cork-board?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */
-	padding: 60px 0;
 	min-height: 70vh;
+	background: url('./assets/josephine-bredehoft-unsplash.jpg');
+	padding: 60px 0px;
 }
 
 main form {
@@ -448,10 +451,10 @@ main form {
 }
 
 select {
-	text-transform: uppercase;
-	width: 290px;
+	width: 275px;
 	padding: 5px 15px;
 	margin-bottom: 10px;
+	text-transform: uppercase;
 }
 
 .alphaContainer input {
@@ -460,7 +463,7 @@ select {
 
 .alphaLabel,
 .alphaClicked {
-	margin: 0px 0px 25px;
+	margin: 0px 0px 50px;
 	width: 275px;
 }
 
@@ -471,10 +474,11 @@ select {
 }
 
 .alphaClicked {
-	background-color: #3a2e22;
+	background-color: #222;
 	color: white;
 }
 
+/******* CARD STYLES */
 .cardsContainer {
 	display: grid;
 	grid-template-columns: 33% 33% 33%;
@@ -504,6 +508,7 @@ select {
 	margin-right: 10px;
 }
 
+/****SCROLL TO TOP BUTTON STYLES */
 .scroll {
 	font-size: 3rem;
 	color: white;
@@ -519,6 +524,7 @@ select {
 	filter: brightness(3.5);
 }
 
+/*****FOOTER STYLES */
 footer {
 	padding: 10px 0px;
 }
@@ -533,6 +539,7 @@ footer {
 	line-height: 1.2;
 }
 
+/******MEDIA QUERIES: 1024PX */
 @media (max-width: 1024px) {
 	.cardsContainer {
 		grid-template-columns: 50% 50%;
@@ -540,6 +547,7 @@ footer {
 	}
 }
 
+/******MEDIA QUERIES: 768PX */
 @media (max-width: 768px) {
 	.cardsContainer {
 		grid-template-columns: 100%;
@@ -547,6 +555,7 @@ footer {
 	}
 }
 
+/******MEDIA QUERIES: 600PX */
 @media (max-width: 600px) {
 	button,
 	input,
@@ -561,10 +570,6 @@ footer {
 	.alphaContainer,
 	.filterContainer {
 		width: 100%;
-	}
-
-	select {
-		padding-left: 23%;
 	}
 
 	.inputsFlex,
@@ -584,5 +589,10 @@ footer {
 
 	.formToFill {
 		width: 100%;
+	}
+
+	/* to create a centring effect in lieu of no text-centering available in dropdown menus */
+	select {
+		padding-left: 23%;
 	}
 }

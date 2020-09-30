@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
 import firebase from './firebase';
+// external libraries
 import SimpleReactValidator from 'simple-react-validator';
 import ScrollToTop from 'react-scroll-up';
+// components
 import Form from './Form';
 import StudentDisplay from './StudentDisplay';
 import DropDownCohort from './DropDownCohort';
 import AlphaButton from './AlphaButton';
+// stylesheet
+import './App.css';
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -16,16 +19,16 @@ class App extends Component {
 			studentCards: [],
 			filteredCards: [],
 			alphaSortedCards: [],
-			firstName: '',
+			firstName: '', // all these for form
 			lastName: '',
 			cohort: 0,
 			website: '',
 			github: '',
 			linkedIn: '',
 			funFact: '',
-			selectedDropDown: 'reset',
-			isToggled: false,
-			isAlpha: false,
+			selectedDropDown: 'reset', // for cohort dropdown menu
+			isToggled: false, // to toggle form on and off screen
+			isAlpha: false, // to toggle alphabetize button
 			formComplete: false,
 		};
 		// form validator messages if there are errors on particlar inputs
@@ -48,6 +51,7 @@ class App extends Component {
 		dbRef.on('value', (response) => {
 			// creating new array to hold the data
 			const newState = [];
+			// creating a variable for the array of objects (student form responses)
 			const data = response.val();
 
 			// on firebase change, push data into newState array
@@ -124,10 +128,6 @@ class App extends Component {
 			this.validator.showMessages();
 		}
 	};
-
-	// handleImageAsFile = (event) => {
-	// 	console.log(event.target.files);
-	// };
 
 	//**********EVENT HANDLER FOR TRACK COHORT SELECTION IN DROP-DOWN***************/
 	handleCohortSelect = (event) => {
@@ -282,7 +282,10 @@ class App extends Component {
 				{/***************FOOTER************/}
 				<footer className='wrapper'>
 					<div className='footerFlex'>
-						<p>Created by Connie Tsang at Juno College</p>
+						<p>
+							Created by <a href='http://connietsangcodes.com'>Connie Tsang</a> at{' '}
+							<a href='http://junocollege.com'>Juno College</a>
+						</p>
 						<p>
 							image by{' '}
 							<a href='https://unsplash.com/@sibilant?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'>
