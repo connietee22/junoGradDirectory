@@ -382,7 +382,7 @@ footer,
 header {
 	display: flex;
 	flex-direction: column;
-	padding: 120px 0px;
+	padding: 100px 0px;
 	justify-content: center;
 	align-items: center;
 }
@@ -443,7 +443,7 @@ textarea {
 main {
 	min-height: 70vh;
 	background: url('./assets/josephine-bredehoft-unsplash.jpg');
-	padding: 60px 0px;
+	padding: 100px 0px;
 }
 
 main form {

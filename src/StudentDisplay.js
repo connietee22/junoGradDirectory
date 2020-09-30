@@ -1,6 +1,6 @@
 import React from 'react';
 
-//*** COMPONENT FUNCTION TO DISPLAY INDIVIDUAL STUDENT CARDS */
+//*****TO DISPLAY INDIVIDUAL STUDENT CARDS */
 const StudentDisplay = (props) => {
 	return (
 		<>
