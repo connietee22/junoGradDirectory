@@ -1,13 +1,10 @@
 import React from 'react';
 
-// FUNCTION - CHANGE BACK IF STATE DOESN'T WORK
+// Form to collect student user information
 const Form = (props) => {
 	return (
 		<>
-			<form id='mainForm'>
-				<p className='boldLabel'>Survived Juno College's bootcamp?</p>
-				<p className='boldLabel'>Add your card to the directory!</p>
-
+			<form id='mainForm' className='userForm'>
 				{/****INPUT - FIRST NAME */}
 				<label htmlFor='firstName' aria-label='enter first name'></label>
 				<input
@@ -105,16 +102,6 @@ const Form = (props) => {
 				></textarea>
 				{/* message will appear if missing */}
 				{props.validator.message('funFact', props.funFact, 'required')}
-
-				{/***** INPUT - IMAGE UPLOAD */}
-				{/* <input
-					// allows user to dive into file directory and upload image to the browser
-					type='file'
-					id='imgUpload'
-					accept='image/png, image/jpeg'
-					name='userImage'
-					onChange={props.handleImageAsFile}
-				/> */}
 
 				{/**** TO SUBMIT FORM */}
 				<button onClick={props.handleSubmit}>Submit</button>

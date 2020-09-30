@@ -208,12 +208,17 @@ class App extends Component {
 					<h1>
 						<span className='junoType'>Juno College</span>Grad Directory
 					</h1>
-					<div className='headerButtons'>
-						{/* This will trigger the form to open */}
-						<button onClick={this.toggleForm}>Add my name!</button>
-						<a href='#main'>
-							<button>Just browse</button>
-						</a>
+					<div className='subHeader'>
+						<h2 className='boldLabel'>
+							<i class='fas fa-terminal'></i>Webdev bootcamp survivors
+						</h2>
+						<div className='headerButtons'>
+							{/* This will trigger the form to open */}
+							<button onClick={this.toggleForm}>Add me!</button>
+							<a href='#main'>
+								<button>Just browsin'</button>
+							</a>
+						</div>
 					</div>
 				</header>
 				{/********FORM SECTION - TO INPUT STUDENT CARDS ***************/}

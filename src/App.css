@@ -274,35 +274,15 @@ textarea {
 	padding: 0.2em 0;
 }
 
-.clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: '';
-	clear: both;
-	height: 0;
-}
-
 * {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.visuallyHidden:not(:focus):not(:active) {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	border: 0;
-	padding: 0;
-	white-space: nowrap;
-	clip-path: inset(100%);
-	clip: rect(00 0 0);
-	overflow: hidden;
-}
-/*******SETUP SNIPPET ENDS HERE */
+/*******SETUP SNIPPET ENDS HERE *********************/
 
+/*******CUSTOM CSS CODE STARTS HERE******************/
 /*****GENERAL STYLES */
 html {
 	font-size: 62.5%;
@@ -310,15 +290,10 @@ html {
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Courier', sans-serif;
 	font-size: 1.6rem;
-	background-color: #fffaf1;
+	background-color: #fff2dd;
 	color: #222;
-}
-
-textarea {
-	font-family: 'Roboto', sans-serif;
-	resize: none;
 }
 
 .wrapper {
@@ -331,10 +306,17 @@ textarea {
 h1 {
 	font-family: 'Barrio', cursive;
 	font-weight: bold;
-	font-size: clamp(5.5rem, 5.5vw, 7rem);
+	font-size: clamp(6rem, 5.8vw, 7rem);
 	text-align: center;
 	letter-spacing: 0.25rem;
 	padding-bottom: 20px;
+}
+
+h2 {
+	font-family: 'Roboto', 'sans-serif';
+	font-size: clamp(1.7rem, 2vw, 2rem);
+	color: #fffaf1;
+	margin-bottom: 15px;
 }
 
 p {
@@ -350,14 +332,23 @@ a:hover {
 	color: #945a2a;
 }
 
+textarea,
+.junoType,
+.alphaLabel {
+	font-family: 'Roboto', sans-serif;
+}
+
 input,
 textarea {
 	text-transform: uppercase;
 }
 
+textarea {
+	resize: none;
+}
+
 .junoType {
 	display: block;
-	font-family: 'Roboto', sans-serif;
 	font-size: clamp(2.5rem, 2.5vw, 4.5rem);
 	text-transform: uppercase;
 }
@@ -382,15 +373,25 @@ footer,
 header {
 	display: flex;
 	flex-direction: column;
-	padding: 100px 0px;
+	padding: 80px 0px;
 	justify-content: center;
 	align-items: center;
 }
 
+.subHeader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 475px;
+	border-radius: 10px;
+	background-color: #222;
+	padding: 30px 15px;
+}
+
 .headerButtons {
 	display: flex;
-	justify-content: space-between;
-	width: 462px;
+	justify-content: space-around;
+	width: 475px;
 }
 
 button,
@@ -408,7 +409,7 @@ button,
 /*******FORM STYLES */
 
 .formToFill {
-	width: 462px;
+	width: 475px;
 	margin: 0px auto;
 }
 
@@ -418,7 +419,10 @@ form {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding-bottom: 60px;
+}
+
+.userForm {
+	padding-bottom: 80px;
 }
 
 .inputsFlex {
@@ -451,8 +455,8 @@ main form {
 }
 
 select {
-	width: 275px;
-	padding: 5px 15px;
+	width: 290px;
+	padding: 15px 15px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
 }
@@ -504,7 +508,8 @@ select {
 
 .fa-github-square,
 .fa-linkedin,
-.fa-desktop {
+.fa-desktop,
+.fa-terminal {
 	margin-right: 10px;
 }
 
@@ -562,6 +567,7 @@ footer {
 	textarea,
 	label,
 	select,
+	.subHeader,
 	.alphaLabel,
 	.alphaClicked,
 	.inputsFlex,
@@ -593,6 +599,6 @@ footer {
 
 	/* to create a centring effect in lieu of no text-centering available in dropdown menus */
 	select {
-		padding-left: 23%;
+		padding-left: 30%;
 	}
 }
