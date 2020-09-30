@@ -89,7 +89,7 @@ const Form = (props) => {
 					placeholder='linkedIn username'
 				></input>
 				{/* message will appear if missing or does not adhere to linkedin's alpha-numeric requirement for usernames */}
-				{props.validator.message('linkedIn', props.linkedIn, 'required|alpha_num')}
+				{props.validator.message('linkedIn', props.linkedIn, 'alpha_num')}
 
 				{/**** INPUT - FUN FACT */}
 				<label htmlFor='funFact' aria-label='enter one fun fact about yourself'></label>

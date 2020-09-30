@@ -451,12 +451,6 @@ select {
 	margin-bottom: 10px;
 }
 
-form.alphaFlex {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 20px;
-}
-
 .alphaFlex input {
 	margin: 0px;
 }
@@ -467,9 +461,20 @@ form.alphaFlex {
 }
 
 .alphaButton {
-	width: 50px;
-	height: 50px;
-	align-items: center;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.alphaClicked {
+	background-color: #3a2e22;
+	color: white;
+	border: 0px solid transparent;
+	width: 200px;
+	border-radius: 3px;
+	padding: 10px 15px;
+	/* margin-top: 10px; */
+	text-align: center;
 }
 
 .cardsContainer {

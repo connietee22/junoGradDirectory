@@ -248,7 +248,7 @@ class App extends Component {
 						selectedDropDown={this.state.selectedDropDown}
 					/>
 					{/* Displays alpha button component */}
-					<AlphaButton handleAlphaSubmit={this.handleAlphaSubmit} />
+					<AlphaButton handleAlphaSubmit={this.handleAlphaSubmit} isAlpha={this.state.isAlpha} />
 
 					<section className='studentProfiles wrapper'>
 						{/* render cards based on filter  */}
