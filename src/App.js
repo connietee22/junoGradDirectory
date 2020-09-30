@@ -241,39 +241,41 @@ class App extends Component {
 				</section>
 
 				<main id='main'>
-					{/* Displays cohort DropDown component  */}
-					<DropDownCohort
-						handleCohortSelect={this.handleCohortSelect}
-						handleCohortSubmit={this.handleCohortSubmit}
-						selectedDropDown={this.state.selectedDropDown}
-					/>
-					{/* Displays alpha button component */}
-					<AlphaButton handleAlphaSubmit={this.handleAlphaSubmit} isAlpha={this.state.isAlpha} />
+					<section className='wrapper'>
+						{/* Displays cohort DropDown component  */}
+						<DropDownCohort
+							handleCohortSelect={this.handleCohortSelect}
+							handleCohortSubmit={this.handleCohortSubmit}
+							selectedDropDown={this.state.selectedDropDown}
+						/>
+						{/* Displays alpha button component */}
+						<AlphaButton handleAlphaSubmit={this.handleAlphaSubmit} isAlpha={this.state.isAlpha} />
 
-					<section className='studentProfiles wrapper'>
-						{/* render cards based on filter  */}
-						<div className='cardsContainer'>
-							{displayCards.map((student, index) => {
-								return (
-									<StudentDisplay
-										key={index} // to differentiate each record in React
-										// all the state data used as props in the StudentDisplay
-										firstName={student.firstName}
-										lastName={student.lastName}
-										cohort={student.cohort}
-										website={student.website}
-										github={student.github}
-										linkedIn={student.linkedIn}
-										funFact={student.funFact}
-									/>
-								);
-							})}
-						</div>
+						<section className='studentProfiles'>
+							{/* render cards based on filter  */}
+							<div className='cardsContainer'>
+								{displayCards.map((student, index) => {
+									return (
+										<StudentDisplay
+											key={index} // to differentiate each record in React
+											// all the state data used as props in the StudentDisplay
+											firstName={student.firstName}
+											lastName={student.lastName}
+											cohort={student.cohort}
+											website={student.website}
+											github={student.github}
+											linkedIn={student.linkedIn}
+											funFact={student.funFact}
+										/>
+									);
+								})}
+							</div>
 
-						{/* scroll to top button from npm package */}
-						<ScrollToTop showUnder={160}>
-							<span className='scroll'>▲</span>
-						</ScrollToTop>
+							{/* scroll to top button from npm package */}
+							<ScrollToTop showUnder={160}>
+								<span className='scroll'>▲</span>
+							</ScrollToTop>
+						</section>
 					</section>
 				</main>
 				{/***************FOOTER************/}

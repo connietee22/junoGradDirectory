@@ -368,6 +368,7 @@ textarea {
 .boldLabel,
 button,
 .alphaLabel,
+.alphaClicked,
 footer {
 	font-weight: 700;
 	text-transform: uppercase;
@@ -388,7 +389,8 @@ header {
 }
 
 button,
-.alphaLabel {
+.alphaLabel,
+.alphaClicked {
 	background-color: lightgray;
 	border: 0px solid transparent;
 	width: 200px;
@@ -446,18 +448,19 @@ main form {
 
 select {
 	text-transform: uppercase;
-	width: 275px;
-	padding: 10px 20px;
+	width: 290px;
+	padding: 5px 15px;
 	margin-bottom: 10px;
 }
 
-.alphaFlex input {
+.alphaContainer input {
 	margin: 0px;
 }
 
-.alphaLabel {
-	margin: 0px;
-	width: 220px;
+.alphaLabel,
+.alphaClicked {
+	margin: 0px 0px 25px;
+	width: 275px;
 }
 
 .alphaButton {
@@ -469,12 +472,6 @@ select {
 .alphaClicked {
 	background-color: #3a2e22;
 	color: white;
-	border: 0px solid transparent;
-	width: 200px;
-	border-radius: 3px;
-	padding: 10px 15px;
-	/* margin-top: 10px; */
-	text-align: center;
 }
 
 .cardsContainer {
@@ -543,30 +540,38 @@ footer {
 }
 
 @media (max-width: 600px) {
-	.inputsFlex {
-		flex-direction: column;
+	button,
+	input,
+	textarea,
+	label,
+	select,
+	.alphaLabel,
+	.alphaClicked,
+	.inputsFlex,
+	.inputsFlex input,
+	.headerButtons,
+	.alphaContainer,
+	.filterContainer {
 		width: 100%;
 	}
 
-	.inputsFlex input {
-		width: 100%;
-		margin-right: 0px;
+	select {
+		padding-left: 20%;
+	}
+
+	.inputsFlex,
+	.headerButtons {
+		flex-direction: column;
 	}
 
 	input,
 	textarea {
 		padding: 8px;
 		margin: 8px 0px;
-		width: 100%;
 	}
 
-	.headerButtons {
-		width: 100%;
-		flex-direction: column;
-	}
-
-	button {
-		width: 100%;
+	.inputsFlex input {
+		margin-right: 0px;
 	}
 
 	.formToFill {

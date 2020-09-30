@@ -11,7 +11,7 @@ const AlphaButton = (props) => {
         
 
 	return (
-		<form className='alphaFlex'>
+		<form className="alphaContainer">
 			<label
                         // on click, if !props.isAlpha (is true), then the list is alphabetized and the text in the label will change to sort by date, and vice versa
 				onClick={!props.isAlpha ? (() => changeText('Sort by date added')) : (() => changeText('Sort by alpha'))}
