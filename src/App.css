@@ -376,7 +376,7 @@ footer {
 header {
 	display: flex;
 	flex-direction: column;
-	padding: 80px 0px;
+	padding: 100px 0px;
 	justify-content: center;
 	align-items: center;
 }
@@ -393,7 +393,7 @@ button,
 	border: 0px solid transparent;
 	width: 200px;
 	border-radius: 3px;
-	padding: 5px 15px;
+	padding: 10px 15px;
 	margin-top: 10px;
 	text-align: center;
 }
@@ -448,17 +448,27 @@ select {
 	text-transform: uppercase;
 	width: 275px;
 	padding: 10px 20px;
+	margin-bottom: 10px;
+}
+
+form.alphaFlex {
+	display: flex;
+	flex-direction: row;
 	margin-bottom: 20px;
 }
 
-.alphaFlex {
-	display: flex;
-	flex-direction: row;
+.alphaFlex input {
+	margin: 0px;
+}
+
+.alphaLabel {
+	margin: 0px;
+	width: 220px;
 }
 
 .alphaButton {
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	align-items: center;
 }
 

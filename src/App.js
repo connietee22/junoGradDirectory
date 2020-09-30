@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
 import SimpleReactValidator from 'simple-react-validator';
-import StudentDisplay from './StudentDisplay';
+import ScrollToTop from 'react-scroll-up';
 import Form from './Form';
+import StudentDisplay from './StudentDisplay';
 import DropDownCohort from './DropDownCohort';
 import AlphaButton from './AlphaButton';
-import ScrollToTop from 'react-scroll-up';
 
 class App extends Component {
 	//************CREATING STATE DATA*********************/
@@ -14,6 +14,8 @@ class App extends Component {
 		super();
 		this.state = {
 			studentCards: [],
+			filteredCards: [],
+			alphaSortedCards: [],
 			firstName: '',
 			lastName: '',
 			cohort: 0,
@@ -22,12 +24,9 @@ class App extends Component {
 			linkedIn: '',
 			funFact: '',
 			selectedDropDown: 'reset',
-			// selectedAlpha: 'reset',
 			isToggled: false,
 			isAlpha: false,
 			formComplete: false,
-			filteredCards: [],
-			alphaSortedCards: [],
 		};
 		// form validator messages if there are errors on particlar inputs
 		this.validator = new SimpleReactValidator({
@@ -42,7 +41,7 @@ class App extends Component {
 
 	//***********UPDATING STATE*************************//
 	componentDidMount() {
-		// call on the database
+		// call on firebase's database
 		const dbRef = firebase.database().ref();
 
 		// on any change of the database, push the data into a state array
@@ -69,6 +68,7 @@ class App extends Component {
 			this.setState({
 				studentCards: newState,
 				filteredCards: newState,
+				alphaSortedCards: [...newState].sort(this.alphabetizeStudents),
 			});
 		});
 	}
@@ -76,9 +76,8 @@ class App extends Component {
 	//********EVENT HANDLER FUNCTION TO UPDATE FORM.JS MULTIPLE INPUTS' STATE VALUES *****************************//
 	handleChange = (event) => {
 		const value = event.target.value;
-
 		this.setState({
-			// this code with help from https://www.pluralsight.com
+			// goes through all the form states and sets the values -- shortcut with help from https://www.pluralsight.com
 			...this.state,
 			[event.target.name]: value,
 		});
@@ -128,13 +127,14 @@ class App extends Component {
 	// 	console.log(event.target.files);
 	// };
 
-	//**********EVENT HANDLER FOR COHORT DROP-DOWN SELECT***************/
+	//**********EVENT HANDLER FOR TRACK COHORT SELECTION IN DROP-DOWN***************/
 	handleCohortSelect = (event) => {
 		this.setState({
 			selectedDropDown: event.target.value,
 		});
 	};
 
+	//***********EVENT HANDLER FOR COHORT NUMBER FOR SUBMIT******* */
 	handleCohortSubmit = (event) => {
 		event.preventDefault();
 		// copy of the returned array from firebase
@@ -149,21 +149,22 @@ class App extends Component {
 				return false; // if any other possible mistake, return false
 			}
 		});
-		// set the filteredCards array based on what was returned in the filter above
+		// take a copy of the filteredCards array and sort alphabetically
+		const alphaSortedCards = [...filteredCards].sort(this.alphabetizeStudents);
+
+		// set the filteredCards array based on what was returned by the filter conditionals above
+		// set the alphaSortedCards array to alphabetized
 		this.setState({
 			filteredCards,
+			alphaSortedCards,
 		});
 	};
 
 	//***********EVENT HANDLER ON ALPHABETIZE BUTTON TO ALPHABETIZE ARRAY */
 	handleAlphaSubmit = (event) => {
-		// to prevent permananently mutating the sort of filteredCards, making a copy
-		const copyOfFilteredCards = [...this.state.filteredCards];
-		// sort alphabetically using the compare function
-		const alphaSortedCards = copyOfFilteredCards.sort(this.alphabetizeStudents);
+		//changes the alpha button's boolean state -- a trigger to determine if something should be alphabetized
 		this.setState({
 			isAlpha: !this.state.isAlpha,
-			alphaSortedCards,
 		});
 	};
 
@@ -175,7 +176,7 @@ class App extends Component {
 		});
 	};
 
-	//****** COMPARE FUNCTION USED IN HANDLEALPHASUBMIT TO SORT ARRAY ALPHABETICALLY****/
+	//****** COMPARE FUNCTION USED TO SORT ARRAY ALPHABETICALLY****/
 	alphabetizeStudents = (a, b) => {
 		// Using toUpperCase() to ignore character casing, just in case it was entered
 		const nameA = a.firstName.toUpperCase();
@@ -191,8 +192,13 @@ class App extends Component {
 		return comparison;
 	};
 
-	//**********RENDERING THE INITIAL PAGE**********************/
+	//**********RENDERING THE PAGE**********************/
 	render() {
+		let displayCards = this.state.filteredCards;
+		// show the alphabetized or original set?
+		if (this.state.isAlpha === true) {
+			displayCards = this.state.alphaSortedCards;
+		}
 		return (
 			<div className='App'>
 				<header className='wrapper'>
@@ -244,26 +250,26 @@ class App extends Component {
 						{/* render cards  */}
 						<div className='cardsContainer'>
 							{/* if alpha button has not been clicked (false), display the cards */}
-							{this.state.isAlpha === false ? (
-								<>
-									{this.state.filteredCards.map((student, index) => {
-										return (
-											<StudentDisplay
-												key={index} // to differentiate each record in React
-												// this is all the state data to be used as props in the StudentDisplay
-												firstName={student.firstName}
-												lastName={student.lastName}
-												cohort={student.cohort}
-												website={student.website}
-												github={student.github}
-												linkedIn={student.linkedIn}
-												funFact={student.funFact}
-											/>
-										);
-									})}
-								</>
-							) : (
-								// ELSE (if alpha button is true/not clicked/toggled back to original state), then display the sortedAlphaCards, cards sorted alphabetically
+							{/* {this.state.isAlpha === false ? ( */}
+
+							{displayCards.map((student, index) => {
+								return (
+									<StudentDisplay
+										key={index} // to differentiate each record in React
+										// this is all the state data to be used as props in the StudentDisplay
+										firstName={student.firstName}
+										lastName={student.lastName}
+										cohort={student.cohort}
+										website={student.website}
+										github={student.github}
+										linkedIn={student.linkedIn}
+										funFact={student.funFact}
+									/>
+								);
+							})}
+
+							{/* ) : ( */}
+							{/* // ELSE (if alpha button is true/not clicked/toggled back to original state), then display the sortedAlphaCards
 								<>
 									{this.state.alphaSortedCards.map((student, index) => {
 										return (
@@ -279,8 +285,8 @@ class App extends Component {
 											/>
 										);
 									})}
-								</>
-							)}
+								</> */}
+							{/* )} */}
 						</div>
 
 						<ScrollToTop showUnder={160}>
