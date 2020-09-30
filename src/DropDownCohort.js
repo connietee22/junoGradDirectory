@@ -5,14 +5,19 @@ import React from 'react';
 const DropDownCohort = (props) => {
 
 		return (
-			<form className="filterContainer">
+			<form className='filterContainer'>
 				<label
 					htmlFor='filterCohort'
 					aria-label='select drop-down option to filter student cards by cohort number'
 				></label>
-				<select id='filterCohort' value={props.selectedDropDown} onClick={props.handleCohortSubmit} onChange={props.handleCohortSelect}>
-					<option value='reset'>Filter results by Cohort</option>
-                    <option value='reset'>ALL COHORTS</option>
+				<select
+					id='filterCohort'
+					value={props.selectedDropDown}
+					onClick={props.handleCohortSubmit}
+					onChange={props.handleCohortSelect}
+				>
+					<option value='reset'>Filter by Cohort number</option>
+					<option value='reset'>ALL COHORTS</option>
 					<option value='1'>1</option>
 					<option value='2'>2</option>
 					<option value='3'>3</option>

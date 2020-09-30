@@ -1,5 +1,6 @@
 import React from 'react';
 
+// FUNCTION - CHANGE BACK IF STATE DOESN'T WORK
 const Form = (props) => {
 	return (
 		<>
@@ -20,7 +21,7 @@ const Form = (props) => {
 					placeholder='first name'
 				></input>
 				{/* "required" message will appear if first name missing */}
-				{props.validator.message('firstName', props.firstName, 'required')}
+				{props.validator.message('firstName', props.firstName, 'required|max: 20')}
 
 				{/****INPUT - LAST NAME */}
 				<label htmlFor='lastName' aria-label='enter last name'></label>
@@ -33,7 +34,7 @@ const Form = (props) => {
 					placeholder='last name'
 				></input>
 				{/* "required" message will appear if last name missing */}
-				{props.validator.message('lastName', props.lastName, 'required')}
+				{props.validator.message('lastName', props.lastName, 'required|max: 20')}
 
 				{/****INPUT - COHORT FIELD */}
 				<label htmlFor='cohort' aria-label='enter cohort number'></label>
@@ -47,7 +48,7 @@ const Form = (props) => {
 					value={props.cohort}
 				></input>
 				{/* message will appear if number missing or is not between 1 and 29 */}
-				{props.validator.message('cohort', props.cohort, 'required|numeric|min:1,num|max:29,num')}
+				{props.validator.message('cohort', props.cohort, 'required|numeric|min:1,num|max:30,num')}
 
 				{/****INPUT - WEBSITE FIELD */}
 				<label htmlFor='website' aria-label='enter website address'></label>
