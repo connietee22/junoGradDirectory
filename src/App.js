@@ -65,6 +65,7 @@ class App extends Component {
 			}
 
 			// setting the new array of data from firebase into our original state array, which we can manipulate for display
+			// set alphaSortedCards here to start, just in case user clicks on the alpha button before the cohort
 			this.setState({
 				studentCards: newState,
 				filteredCards: newState,
@@ -194,8 +195,9 @@ class App extends Component {
 
 	//**********RENDERING THE PAGE**********************/
 	render() {
+		//to prepare the correct cards to display, saving the filtered cards in a variable
 		let displayCards = this.state.filteredCards;
-		// show the alphabetized or original set?
+		// if the Alphabetize button is triggered, then the cards to display will be the alphabetized set
 		if (this.state.isAlpha === true) {
 			displayCards = this.state.alphaSortedCards;
 		}
@@ -206,24 +208,26 @@ class App extends Component {
 						<span className='junoType'>Juno College</span>Grad Directory
 					</h1>
 					<div className='headerButtons'>
-						<button onClick={this.toggleForm} href='#main'>
-							Add my name!
-						</button>
+						{/* This will trigger the form to open */}
+						<button onClick={this.toggleForm}>Add my name!</button>
 						<a href='#main'>
 							<button>Just browse</button>
 						</a>
 					</div>
 				</header>
+				{/********FORM SECTION - TO INPUT STUDENT CARDS ***************/}
 				<section className='wrapper'>
 					<div className='formToFill'>
 						{/* to show the form only if the button is toggled and the form is not complete */}
 						{this.state.isToggled && !this.state.formComplete && (
 							<Form
+								// form functions
 								handleChange={this.handleChange}
-								handleImageAsFile={this.handleImageAsFile}
+								// handleImageAsFile={this.handleImageAsFile}
 								handleSubmit={this.handleSubmit}
+								// form validation
 								validator={this.validator}
-								// /* // state data used as props in Form */
+								//*****state data used as props in Form */
 								lastName={this.state.lastName}
 								firstName={this.state.firstName}
 								cohort={this.state.cohort}
@@ -237,26 +241,23 @@ class App extends Component {
 				</section>
 
 				<main id='main'>
-					{/* Pulling in DropDown component to render the filter dropdown on page */}
+					{/* Displays cohort DropDown component  */}
 					<DropDownCohort
 						handleCohortSelect={this.handleCohortSelect}
-						selectedDropDown={this.state.selectedDropDown}
 						handleCohortSubmit={this.handleCohortSubmit}
+						selectedDropDown={this.state.selectedDropDown}
 					/>
-					{/* Pulling in alpha button */}
+					{/* Displays alpha button component */}
 					<AlphaButton handleAlphaSubmit={this.handleAlphaSubmit} />
 
 					<section className='studentProfiles wrapper'>
-						{/* render cards  */}
+						{/* render cards based on filter  */}
 						<div className='cardsContainer'>
-							{/* if alpha button has not been clicked (false), display the cards */}
-							{/* {this.state.isAlpha === false ? ( */}
-
 							{displayCards.map((student, index) => {
 								return (
 									<StudentDisplay
 										key={index} // to differentiate each record in React
-										// this is all the state data to be used as props in the StudentDisplay
+										// all the state data used as props in the StudentDisplay
 										firstName={student.firstName}
 										lastName={student.lastName}
 										cohort={student.cohort}
@@ -267,33 +268,15 @@ class App extends Component {
 									/>
 								);
 							})}
-
-							{/* ) : ( */}
-							{/* // ELSE (if alpha button is true/not clicked/toggled back to original state), then display the sortedAlphaCards
-								<>
-									{this.state.alphaSortedCards.map((student, index) => {
-										return (
-											<StudentDisplay
-												key={index}
-												firstName={student.firstName}
-												lastName={student.lastName}
-												cohort={student.cohort}
-												website={student.website}
-												github={student.github}
-												linkedIn={student.linkedIn}
-												funFact={student.funFact}
-											/>
-										);
-									})}
-								</> */}
-							{/* )} */}
 						</div>
 
+						{/* scroll to top button from npm package */}
 						<ScrollToTop showUnder={160}>
 							<span className='scroll'>▲</span>
 						</ScrollToTop>
 					</section>
 				</main>
+				{/***************FOOTER************/}
 				<footer className='wrapper'>
 					<div className='footerFlex'>
 						<p>Created by Connie Tsang at Juno College</p>
