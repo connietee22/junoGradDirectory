@@ -1,5 +1,6 @@
 import React from 'react';
 
+//*** COMPONENT FUNCTION TO DISPLAY INDIVIDUAL STUDENT CARDS */
 const StudentDisplay = (props) => {
 	return (
 		<>
@@ -29,7 +30,7 @@ const StudentDisplay = (props) => {
 					</a>
 				</p>
 				<p>
-					<span className='boldLabel'>About Me: </span>
+					<span className='boldLabel'>Fun fact: </span>
 					{props.funFact}
 				</p>
 			</div>

@@ -1,9 +1,7 @@
 import React from 'react';
 
-/******DROP-DOWN MENU TO SORT CARDS */
-
+/******BUTTON TO ALPHABETIZE CARDS*****/
 const AlphaButton = (props) => {
-
         return (
                 <form className="alphaFlex">
                         <label htmlFor="alphaButton" className="alphaLabel">Sort by Alpha</label>

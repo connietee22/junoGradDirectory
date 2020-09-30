@@ -19,7 +19,7 @@ const Form = (props) => {
 					value={props.firstName}
 					placeholder='first name'
 				></input>
-				{/* determines the message to display when inputs are incorrect or missing */}
+				{/* "required" message will appear if first name missing */}
 				{props.validator.message('firstName', props.firstName, 'required')}
 
 				{/****INPUT - LAST NAME */}
@@ -32,6 +32,7 @@ const Form = (props) => {
 					value={props.lastName}
 					placeholder='last name'
 				></input>
+				{/* "required" message will appear if last name missing */}
 				{props.validator.message('lastName', props.lastName, 'required')}
 
 				{/****INPUT - COHORT FIELD */}
@@ -45,6 +46,7 @@ const Form = (props) => {
 					onChange={props.handleChange}
 					value={props.cohort}
 				></input>
+				{/* message will appear if number missing or is not between 1 and 29 */}
 				{props.validator.message('cohort', props.cohort, 'required|numeric|min:1,num|max:29,num')}
 
 				{/****INPUT - WEBSITE FIELD */}
@@ -60,6 +62,7 @@ const Form = (props) => {
 					pattern='https?://.+'
 					title='Include http://'
 				></input>
+				{/* message will appear if missing or not an url abiding to the stated pattern */}
 				{props.validator.message('website', props.website, 'required|url')}
 
 				{/****INPUT - GITHUB FIELD */}
@@ -72,6 +75,7 @@ const Form = (props) => {
 					value={props.github}
 					placeholder='github username'
 				></input>
+				{/* message will appear if missing or does not adhere to github's alpha-numeric-dash requirement for usernames */}
 				{props.validator.message('github', props.github, 'required|alpha_num_dash')}
 
 				{/**** INPUT - LINKEDIN */}
@@ -84,6 +88,7 @@ const Form = (props) => {
 					value={props.linkedIn}
 					placeholder='linkedIn username'
 				></input>
+				{/* message will appear if missing or does not adhere to linkedin's alpha-numeric requirement for usernames */}
 				{props.validator.message('linkedIn', props.linkedIn, 'required|alpha_num')}
 
 				{/**** INPUT - FUN FACT */}
@@ -97,6 +102,7 @@ const Form = (props) => {
 					value={props.funFact}
 					placeholder='One fun fact about yourself'
 				></textarea>
+				{/* message will appear if missing */}
 				{props.validator.message('funFact', props.funFact, 'required')}
 
 				{/***** INPUT - IMAGE UPLOAD */}
