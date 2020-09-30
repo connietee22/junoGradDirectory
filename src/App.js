@@ -116,6 +116,7 @@ class App extends Component {
 				funFact: '',
 				formComplete: '',
 				isToggled: '',
+				selectedDropDown: '',
 			});
 			document.getElementById('mainForm').reset();
 		} else {
