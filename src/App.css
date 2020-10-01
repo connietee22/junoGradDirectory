@@ -488,6 +488,7 @@ select {
 	box-shadow: 0px 2px 2px black;
 }
 
+/* to stagger cards in different directions */
 .cardsContainer div:nth-child(odd) {
 	transform: rotate(-1deg);
 }
@@ -557,7 +558,6 @@ footer {
 	textarea,
 	label,
 	select,
-	.subHeader,
 	.alphaLabel,
 	.alphaClicked,
 	.inputsFlex,
@@ -574,6 +574,7 @@ footer {
 	}
 
 	.headerButtons {
+		/* to make use of the space-between in flex container */
 		height: 100px;
 	}
 
