@@ -1,7 +1,12 @@
 ## Juno College Grad Directory
 
-A directory of Juno College Bootcamp Grads, where users can input basic details, which will display in browsable user cards. Created by Connie Tsang at Juno College as part of the Immersive Web Development Bootcamp. Tools used: React, Firebase.
+A directory of Juno College Bootcamp Grads, where users can input basic details, which will display in browsable user cards. Created by Connie Tsang at Juno College as part of the Immersive Web Development Bootcamp.
 
-// REMAINING STRETCH GOALS
+## Tools used:
+
+React, Firebase, HTML, CSS.
+
+## REMAINING STRETCH GOALS
+
 // Adding pagination package
 // Uploading user images to firebase
