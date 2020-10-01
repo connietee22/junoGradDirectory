@@ -217,15 +217,13 @@ class App extends Component {
 							<span className='junoType'>Juno College</span>Grad Directory
 						</h1>
 						<h2><i className='fas fa-terminal'></i>A collection of front-end development bootcamp survivors</h2>
-					{/* <div className='subHeader'> */}
 						<div className='headerButtons'>
 							{/* This will trigger the form to open */}
 							<button onClick={this.toggleForm}>Add me!</button>
 							<a href='#main'>
 								<button>Just browsin'</button>
 							</a>	
-				</div>
-					{/* </div> */}
+						</div>
 					</div>
 				</header>
 				{/********FORM SECTION - TO INPUT STUDENT CARDS ***************/}

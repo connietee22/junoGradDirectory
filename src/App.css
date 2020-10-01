@@ -389,18 +389,10 @@ header {
 	width: 100%;
 }
 
-/* .subHeader {
-	/* display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%; */
-/* border-radius: 10px;
-	background-color: #3a2e22;
-	padding: 30px 15px; */
-/* } */
-
-.headerButtons button {
-	margin-right: 15px;
+.headerButtons {
+	display: flex;
+	justify-content: space-between;
+	width: 450px;
 }
 
 button,
@@ -411,6 +403,13 @@ button,
 	width: 200px;
 	border-radius: 3px;
 	padding: 10px 15px;
+	box-shadow: 0px 2px 1px #222;
+}
+
+button:hover,
+.alphaLabel:hover,
+.alphaClicked:hover {
+	filter: brightness(1.5);
 }
 
 /*******FORM STYLES */
@@ -468,15 +467,9 @@ select {
 	width: 275px;
 }
 
-.alphaButton {
-	opacity: 0;
-	width: 0;
-	height: 0;
-}
-
 .alphaClicked {
 	background-color: #222;
-	color: white;
+	color: #fffaf1;
 }
 
 /******* CARD STYLES */
@@ -580,8 +573,8 @@ footer {
 		flex-direction: column;
 	}
 
-	.headerButtons button {
-		margin: 10px 0px 0px;
+	.headerButtons {
+		height: 100px;
 	}
 
 	input,
