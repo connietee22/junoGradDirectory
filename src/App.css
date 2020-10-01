@@ -467,6 +467,7 @@ select {
 
 .alphaLabel,
 .alphaClicked {
+	text-align: left;
 	margin: 0px 0px 50px;
 	width: 275px;
 }
@@ -595,10 +596,5 @@ footer {
 
 	.formToFill {
 		width: 100%;
-	}
-
-	/* to create a centring effect in lieu of no text-centering available in dropdown menus */
-	select {
-		padding-left: 30%;
 	}
 }
