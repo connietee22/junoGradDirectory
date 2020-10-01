@@ -160,7 +160,7 @@ html {
 	-ms-text-size-adjust: 100%;
 }
 a:focus {
-	outline: thin dotted;
+	outline: 3px dotted;
 }
 a:active,
 a:hover {
@@ -302,6 +302,12 @@ body {
 	margin: 0px auto;
 }
 
+a:focus,
+button:focus,
+input:focus {
+	outline: 3px solid lightskyblue;
+}
+
 /*************GENERAL FONT STYLING */
 h1 {
 	font-family: 'Barrio', cursive;
@@ -316,7 +322,8 @@ h2 {
 	font-family: 'Roboto', 'sans-serif';
 	font-size: clamp(1.7rem, 2vw, 2rem);
 	color: #fffaf1;
-	margin-bottom: 15px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 p {
@@ -384,7 +391,7 @@ header {
 	align-items: center;
 	width: 475px;
 	border-radius: 10px;
-	background-color: #222;
+	background-color: #3a2e22;
 	padding: 30px 15px;
 }
 
@@ -402,7 +409,6 @@ button,
 	width: 200px;
 	border-radius: 3px;
 	padding: 10px 15px;
-	margin-top: 10px;
 	text-align: center;
 }
 
@@ -578,6 +584,10 @@ footer {
 	.alphaContainer,
 	.filterContainer {
 		width: 100%;
+	}
+
+	.browseButton {
+		margin-top: 10px;
 	}
 
 	.inputsFlex,

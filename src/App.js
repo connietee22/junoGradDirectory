@@ -19,7 +19,7 @@ class App extends Component {
 			studentCards: [],
 			filteredCards: [],
 			alphaSortedCards: [],
-			firstName: '', // all these for form
+			firstName: '', // user inputs
 			lastName: '',
 			cohort: 0,
 			website: '',
@@ -69,7 +69,7 @@ class App extends Component {
 			}
 
 			// setting the new array of data from firebase into our original state array, which we can manipulate for display
-			// set alphaSortedCards here to start, just in case user clicks on the alpha button before the cohort
+			// set alphaSortedCards is also added here at start, just in case user clicks on the alpha button before the cohort
 			this.setState({
 				studentCards: newState,
 				filteredCards: newState,
@@ -129,11 +129,23 @@ class App extends Component {
 		}
 	};
 
-	//**********EVENT HANDLER FOR TRACK COHORT SELECTION IN DROP-DOWN***************/
-	// handleCohortSelect = (event) => {
-	// 	this.setState({});
-	// };
+	//***********EVENT HANDLER FOR COHORT NUMBER SUBMIT******* */
+	handleCohortSubmit = (event) => {
+		event.preventDefault();
 
+		// grab the state of the dropdown option selected
+		this.setState(
+			{
+				selectedDropDown: event.target.value,
+			},
+			// once the state is set, then do a callback funtion to setCardState function below (code courtesy Chris Harris, developer)
+			() => {
+				this.setCardState();
+			}
+		);
+	};
+
+	// to set the filteredCard set and alphabetically sorted cards set for render
 	setCardState = () => {
 		// copy of the returned array from firebase
 		const copyOfStudentCards = [...this.state.studentCards];
@@ -149,26 +161,11 @@ class App extends Component {
 		});
 		// take a copy of the filteredCards array and sort alphabetically
 		const alphaSortedCards = [...filteredCards].sort(this.alphabetizeStudents);
+		// set the filteredCards and alphaSortedCards array based on what was returned by the filter conditionals above
 		this.setState({
 			filteredCards,
 			alphaSortedCards,
 		});
-	};
-
-	//***********EVENT HANDLER FOR COHORT NUMBER FOR SUBMIT******* */
-	handleCohortSubmit = (event) => {
-		event.preventDefault();
-
-		// set the filteredCards array based on what was returned by the filter conditionals above
-		// set the alphaSortedCards array to alphabetized
-		this.setState(
-			{
-				selectedDropDown: event.target.value,
-			},
-			() => {
-				this.setCardState();
-			}
-		);
 	};
 
 	//***********EVENT HANDLER ON ALPHABETIZE BUTTON TO ALPHABETIZE ARRAY */
@@ -211,6 +208,7 @@ class App extends Component {
 		if (this.state.isAlpha === true) {
 			displayCards = this.state.alphaSortedCards;
 		}
+		// ****** RETURN *******
 		return (
 			<div className='App'>
 				<header className='wrapper'>
@@ -219,15 +217,15 @@ class App extends Component {
 					</h1>
 					<div className='subHeader'>
 						<h2 className='boldLabel'>
-							<i class='fas fa-terminal'></i>Webdev bootcamp survivors
+							<i className='fas fa-terminal'></i> Web-Dev bootcamp survivors
 						</h2>
 						<div className='headerButtons'>
 							{/* This will trigger the form to open */}
 							<button onClick={this.toggleForm}>Add me!</button>
-							<a href='#main'>
+							<a className="browseButton" href='#main'>
 								<button>Just browsin'</button>
-							</a>
-						</div>
+							</a>	
+				</div>
 					</div>
 				</header>
 				{/********FORM SECTION - TO INPUT STUDENT CARDS ***************/}

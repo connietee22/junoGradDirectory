@@ -14,7 +14,6 @@ const DropDownCohort = (props) => {
 					id='filterCohort'
 					value={props.selectedDropDown}
 					onChange={props.handleCohortSubmit}
-					// onChange={props.handleCohortSelect}
 				>
 					<option value='reset'>Filter by Cohort</option>
 					<option value='reset'>ALL COHORTS</option>
