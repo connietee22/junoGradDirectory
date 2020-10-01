@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/junoGradDirectory/static/css/main.62a699c2.chunk.css",
-    "main.js": "/junoGradDirectory/static/js/main.25aea0a2.chunk.js",
-    "main.js.map": "/junoGradDirectory/static/js/main.25aea0a2.chunk.js.map",
+    "main.css": "/junoGradDirectory/static/css/main.4dc1733b.chunk.css",
+    "main.js": "/junoGradDirectory/static/js/main.1fabd7df.chunk.js",
+    "main.js.map": "/junoGradDirectory/static/js/main.1fabd7df.chunk.js.map",
     "runtime-main.js": "/junoGradDirectory/static/js/runtime-main.525595be.js",
     "runtime-main.js.map": "/junoGradDirectory/static/js/runtime-main.525595be.js.map",
     "static/js/2.510115eb.chunk.js": "/junoGradDirectory/static/js/2.510115eb.chunk.js",
     "static/js/2.510115eb.chunk.js.map": "/junoGradDirectory/static/js/2.510115eb.chunk.js.map",
     "index.html": "/junoGradDirectory/index.html",
-    "precache-manifest.bb3960258d6c854838b0ed508967c0dd.js": "/junoGradDirectory/precache-manifest.bb3960258d6c854838b0ed508967c0dd.js",
+    "precache-manifest.d1ab075cde353e3219ad7b01b609760e.js": "/junoGradDirectory/precache-manifest.d1ab075cde353e3219ad7b01b609760e.js",
     "service-worker.js": "/junoGradDirectory/service-worker.js",
-    "static/css/main.62a699c2.chunk.css.map": "/junoGradDirectory/static/css/main.62a699c2.chunk.css.map",
+    "static/css/main.4dc1733b.chunk.css.map": "/junoGradDirectory/static/css/main.4dc1733b.chunk.css.map",
     "static/js/2.510115eb.chunk.js.LICENSE.txt": "/junoGradDirectory/static/js/2.510115eb.chunk.js.LICENSE.txt",
     "static/media/App.css": "/junoGradDirectory/static/media/josephine-bredehoft-unsplash.199280cf.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.525595be.js",
     "static/js/2.510115eb.chunk.js",
-    "static/css/main.62a699c2.chunk.css",
-    "static/js/main.25aea0a2.chunk.js"
+    "static/css/main.4dc1733b.chunk.css",
+    "static/js/main.1fabd7df.chunk.js"
   ]
 }
