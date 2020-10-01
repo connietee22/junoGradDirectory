@@ -221,7 +221,7 @@ class App extends Component {
 						<div className='headerButtons'>
 							{/* This will trigger the form to open */}
 							<button onClick={this.toggleForm}>Add me!</button>
-							<a className='browseButton' href='#main'>
+							<a href='#main'>
 								<button>Just browsin'</button>
 							</a>	
 				</div>

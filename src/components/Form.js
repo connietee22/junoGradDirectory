@@ -40,7 +40,6 @@ const Form = (props) => {
 					id='cohort'
 					name='cohort'
 					className='standAloneInput'
-					placeholder='Cohort number'
 					onChange={props.handleChange}
 					value={props.cohort}
 				></input>
