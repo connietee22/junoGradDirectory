@@ -4,10 +4,10 @@ import firebase from './firebase';
 import SimpleReactValidator from 'simple-react-validator';
 import ScrollToTop from 'react-scroll-up';
 // components
-import Form from './Form';
-import StudentDisplay from './StudentDisplay';
-import DropDownCohort from './DropDownCohort';
-import AlphaButton from './AlphaButton';
+import Form from './components/Form';
+import StudentDisplay from './components/StudentDisplay';
+import DropDownCohort from './components/DropDownCohort';
+import AlphaButton from './components/AlphaButton';
 // stylesheet
 import './App.css';
 

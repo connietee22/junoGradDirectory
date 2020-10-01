@@ -334,7 +334,8 @@ a:hover {
 
 textarea,
 .junoType,
-.alphaLabel {
+.alphaLabel,
+.alphaClicked {
 	font-family: 'Roboto', sans-serif;
 }
 
