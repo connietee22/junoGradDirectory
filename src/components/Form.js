@@ -56,7 +56,6 @@ const Form = (props) => {
 					placeholder='website'
 					onChange={props.handleChange}
 					value={props.website}
-					pattern='https?://.+'
 					title='Include http://'
 				></input>
 				{/* message will appear if missing or not an url abiding to the stated pattern */}
