@@ -36,7 +36,7 @@ class App extends Component {
 			autoForceUpdate: this,
 			messages: {
 				required: "Aw! Don't leave this field empty!",
-				alpha_num: 'You sure you typed that right?',
+				alpha_num: "You sure that's a LinkedIn profile?",
 				alpha_num_dash: "This doesn't look like a Github name",
 			},
 		});
