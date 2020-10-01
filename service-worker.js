@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/junoGradDirectory/precache-manifest.91800af3a8edf559f3cb0db063119a69.js"
+  "/junoGradDirectory/precache-manifest.e0058ba9ea0c8f229d31e340d712d2c7.js"
 );
 
 self.addEventListener('message', (event) => {
