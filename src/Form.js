@@ -90,7 +90,7 @@ const Form = (props) => {
 				{props.validator.message('linkedIn', props.linkedIn, 'required|alpha_num')}
 
 				{/**** INPUT - FUN FACT */}
-				<label htmlFor='funFact' aria-label='enter one fun fact about yourself'></label>
+				<label htmlFor='funFact' aria-label='enter one fun fact about yourself!'></label>
 				<textarea
 					maxLength='100'
 					id='funFact'
@@ -98,7 +98,7 @@ const Form = (props) => {
 					className='standAloneInput'
 					onChange={props.handleChange}
 					value={props.funFact}
-					placeholder='One fun fact about yourself'
+					placeholder='One fun fact about yourself!'
 				></textarea>
 				{/* message will appear if missing */}
 				{props.validator.message('funFact', props.funFact, 'required')}

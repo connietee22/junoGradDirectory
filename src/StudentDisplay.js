@@ -5,15 +5,15 @@ const StudentDisplay = (props) => {
 	return (
 		<>
 			<div>
-				<p className='studentName boldLabel'>
+				<span className='studentName boldLabel'>
 					{props.firstName} {props.lastName}
-				</p>
+				</span>
 				<p className='boldLabel'>cohort {props.cohort}</p>
 
 				<p>
 					<a href={props.website}>
 						<i className='fas fa-desktop' aria-hidden='true'></i>
-						{props.website}
+						portfolio
 					</a>
 				</p>
 
