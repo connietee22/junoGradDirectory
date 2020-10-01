@@ -461,8 +461,9 @@ select {
 	text-transform: uppercase;
 }
 
-.alphaContainer input {
-	margin: 0px;
+.alphaContainer {
+	display: flex;
+	justify-content: center;
 }
 
 .alphaLabel,
