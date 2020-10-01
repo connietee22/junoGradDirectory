@@ -98,7 +98,7 @@ const Form = (props) => {
 					className='standAloneInput'
 					onChange={props.handleChange}
 					value={props.funFact}
-					placeholder='One fun fact about yourself!'
+					placeholder='Most importantly: one fun fact about yourself!'
 				></textarea>
 				{/* message will appear if missing */}
 				{props.validator.message('funFact', props.funFact, 'required')}

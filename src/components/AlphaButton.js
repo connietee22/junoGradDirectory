@@ -24,6 +24,7 @@ const AlphaButton = (props) => {
 					type='checkbox'
 					id='alphaButton'
 					className='alphaButton'
+					tabIndex="1"
 					onChange={props.handleAlphaSubmit}
 				></input>
 			</label>

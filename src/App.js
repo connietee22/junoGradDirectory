@@ -130,15 +130,11 @@ class App extends Component {
 	};
 
 	//**********EVENT HANDLER FOR TRACK COHORT SELECTION IN DROP-DOWN***************/
-	handleCohortSelect = (event) => {
-		this.setState({
-			selectedDropDown: event.target.value,
-		});
-	};
+	// handleCohortSelect = (event) => {
+	// 	this.setState({});
+	// };
 
-	//***********EVENT HANDLER FOR COHORT NUMBER FOR SUBMIT******* */
-	handleCohortSubmit = (event) => {
-		event.preventDefault();
+	setCardState = () => {
 		// copy of the returned array from firebase
 		const copyOfStudentCards = [...this.state.studentCards];
 		// creating a filteredCards array to manipulate and display
@@ -153,13 +149,26 @@ class App extends Component {
 		});
 		// take a copy of the filteredCards array and sort alphabetically
 		const alphaSortedCards = [...filteredCards].sort(this.alphabetizeStudents);
-
-		// set the filteredCards array based on what was returned by the filter conditionals above
-		// set the alphaSortedCards array to alphabetized
 		this.setState({
 			filteredCards,
 			alphaSortedCards,
 		});
+	};
+
+	//***********EVENT HANDLER FOR COHORT NUMBER FOR SUBMIT******* */
+	handleCohortSubmit = (event) => {
+		event.preventDefault();
+
+		// set the filteredCards array based on what was returned by the filter conditionals above
+		// set the alphaSortedCards array to alphabetized
+		this.setState(
+			{
+				selectedDropDown: event.target.value,
+			},
+			() => {
+				this.setCardState();
+			}
+		);
 	};
 
 	//***********EVENT HANDLER ON ALPHABETIZE BUTTON TO ALPHABETIZE ARRAY */
