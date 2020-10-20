@@ -366,8 +366,10 @@ textarea {
 	word-break: break-word;
 }
 
+h3,
 button,
 footer,
+label,
 .boldLabel,
 .alphaLabel,
 .alphaClicked {
@@ -428,6 +430,16 @@ button:hover,
 	padding-bottom: 80px;
 }
 
+.labelInput {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.labelInput label {
+	width: 30%;
+}
+
 .inputsFlex {
 	display: flex;
 }
@@ -444,6 +456,10 @@ textarea {
 .inputsFlex input {
 	width: 50%;
 	margin-right: 10px;
+}
+
+form button {
+	margin-top: 15px;
 }
 
 /******STUDENT CARD DISPLAY SECTION  */
@@ -565,6 +581,17 @@ footer {
 	.headerButtons,
 	.alphaContainer,
 	.filterContainer {
+		width: 100%;
+	}
+
+	.labelInput {
+		flex-direction: column;
+		align-items: start;
+		width: 100%;
+		padding-top: 20px;
+	}
+
+	.labelInput label {
 		width: 100%;
 	}
 

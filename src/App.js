@@ -234,7 +234,6 @@ class App extends Component {
 							<Form
 								// form functions
 								handleChange={this.handleChange}
-								// handleImageAsFile={this.handleImageAsFile}
 								handleSubmit={this.handleSubmit}
 								// form validation
 								validator={this.validator}
